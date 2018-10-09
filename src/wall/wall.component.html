@@ -1,0 +1,8 @@
+<h1>{{title}}</h1>
+
+<h2>My Posts</h2>
+<ul class="Posts">
+  <li *ngFor="let post of posts">
+    <span class="badge">{{post.id}}</span> {{post.autor}}
+  </li>
+</ul>
