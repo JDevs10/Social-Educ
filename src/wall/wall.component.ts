@@ -9,10 +9,10 @@ import { Post } from '../app/mock/post';
   styleUrls: ['./wall.component.css']
 })
 export class WallComponent implements OnInit {
-
-  title = 'My wall tittle';
-  posts = POSTS;
-  selectedPost: Post;
+  
+  //posts = POSTS;
+  posts: Post[];
+  //selectedPost: Post;
 
   constructor(private postService: PostService) {}
 
@@ -22,10 +22,11 @@ export class WallComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getPost();
   }
-
+/*
   onSelect(post: Post): void {
     this.selectedPost = post;
-  }
+  }*/
 
 }

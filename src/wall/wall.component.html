@@ -1,8 +1,46 @@
-<h1>{{title}}</h1>
+<div class="container Posts" *ngFor="let post of posts">
+    <div class="row bg-light">
+        <!-- profile post info -->
+        <div class="logo float-left">
+            <img src="/assets/logo_90.png" alt="Logo 100" width="auto" height="auto" class="img-thumbnail" />
+          </div>
+        <div class="col-lg-8 col-md-5">
+            <div class="d-flex flex-column">
+                <div>
+                  <ul class='news-items list-unstyled'>
+                    <li class="news box" data-event-kind="recruitment">
+                      <a href="/fr/events/31383-ingenieur-a-la-recherche-d-un-stage-inscrivez-vous-a-notre-job-fair">
+                      <!-- School profile pic -->  
+                      <div class="content text-left" style="font-size: 14px;">
+                        <h4>{{post.title}}</h4>
+                          <p>{{post.body}}</p>
+                      </div>    
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+        <!-- left post box -->
+        <div class="date">
+          <P>Poste a {{post.date}}</P>
+        </div>                
+    </div>
+</div>
 
-<h2>My Posts</h2>
+  
+
+<!--
 <ul class="Posts">
+  <li>
+    <div class="logo float-left">
+      <img src="/assets/logo_90.png" alt="Logo 80" width="80" height="80" class="img-thumbnail" />
+    </div>
+  </li>
   <li *ngFor="let post of posts">
-    <span class="badge">{{post.id}}</span> {{post.autor}}
+    <span class="badge">{{post.title}}</span>
+    <span>{{post.body}}</span>
+    <span></span>
   </li>
 </ul>
+-->
