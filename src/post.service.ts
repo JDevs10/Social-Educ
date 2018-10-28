@@ -9,14 +9,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PostService {
-
-  private postsUrl = 'http://localhost/Social/web/index.php/api/blog';
+  
+  private urlGetPost = 'http://localhost/Social/web/index.php/api/blog';
+  private urlAddPost = 'http://localhost/Social/web/index.php/api/post';
 
   constructor(private http: HttpClient) { }
 
   getPost(): Observable<Post[]> {
     /*convertir cette methode pour utiller HttpClient
     return of(POSTS);*/
-    return this.http.get<Post[]>(this.postsUrl, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+    return this.http.get<Post[]>(this.urlGetPost, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  }
+
+  addPost(title, autor,body : Post): any {
+    return this.http.put<Post[]>(this.urlAddPost, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 }
