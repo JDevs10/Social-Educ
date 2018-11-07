@@ -13,17 +13,20 @@
           <form>
             <div class="text-left">
               <p><input type="text" placeholder="Post Title..." #postTitle></p>
+              <p><input type="text" placeholder="Post Author..." #postAuthor></p>
+              <p><input type="text" placeholder="Post Picture..." #postPicture></p>
+              <p><input type="text" placeholder="Post Media..." #postMedia></p>
             </div>
             
               <div class="postEditRow"> <!--row-->
                 <div class="form-group">
-                    <textarea type="text" class="form-control float-left" #postBody rows="3" placeholder="Exprimez-vous..."></textarea>
+                    <textarea type="text" class="form-control float-left" rows="3" placeholder="Exprimez-vous..." #postBody></textarea>
                   </div>
 
                   <div class="form-control-file">
-                  <input type="file"  #postImage>
-                      <button (click)="addPost(postTitle.value, postAutor.value, postBody.value); 
-                       postTitle.value = ''; postAutor.value = ''; postBody.value = '';"> Post</button>    
+                  <input type="file" >
+                      <button type="submit" (click)="addPost(postTitle.value, postAuthor.value, postBody.value, postPicture.value, postMedia.value); 
+                      postTitle.value=''; postAuthor.value=''; postBody.value=''; postPicture.value=''; postMedia.value='';"> Post</button>    
                   </div>
               </div>   
             </form>   <!-- form area ends-->

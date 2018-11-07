@@ -1,0 +1,138 @@
+/* Student General */
+#studentGeneral{
+    background-color: bisque;   
+}
+
+.grid-container {
+    display: grid;
+    grid-gap: 10px;
+    background-color: beige;
+    padding: 10px;
+}
+
+.grid-box {
+    text-align: left;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.box1{
+    background-image: url("https://source.unsplash.com/random/1100x200");   /*1100x200 px*/
+    background-position: center;
+    background-size: cover;
+    width: 1100px;
+    height: 200px;
+}
+
+.box2 p{
+    position: relative;
+    left: 225px;
+}
+
+.studentImag{
+    background-size: cover; 
+    position: relative;
+    border-radius: 100%;
+    left: 25px;
+    top: 100px;
+}
+
+/* Student posts */
+#studentPosts{
+    background-color: bisque;
+    text-align: left;
+}
+
+#studentPosts .postImage{
+    width: 100px;
+    height: 100px;
+}
+
+#studentPosts div.postText{
+    padding-left: 10px;
+    width: 900px;
+    height: auto;
+}
+
+/* Student Experience */
+#studentExperience{
+    background-color: bisque;
+    text-align: left;
+}
+
+.experienceText{
+    text-align: left;
+    padding-left: 50px;
+}
+
+.experienceIcons{
+    color: black;
+    font-size: 30px;
+    position: relative;
+    left: 700px;
+    top: -10px;
+}
+
+#studentExperience .experienceIcons button{
+    background-color: transparent;
+    background: none;
+    border: none;
+    border-bottom: none;
+}
+
+/* Student Education */
+#studentEducation{
+    background-color: bisque;
+    text-align: left;
+}
+
+.educationText{
+    text-align: left;
+    padding-left: 50px;
+}
+
+.educationIcons{
+    color: black;
+    font-size: 30px;
+    position: relative;
+    left: 700px;
+    top: -10px;
+}
+
+#studentEducation .educationIcons button{
+    background-color: transparent;
+    background: none;
+    border: none;
+    border-bottom: none;
+}
+
+/* Student Skills */
+#studentskills{
+    background-color: bisque;
+    text-align: left;
+}
+
+#studentskills button{
+    position: relative;
+    left: 825px;
+    top: -25px;
+    background-color: transparent;
+    background: none;
+    border: none;
+}
+
+#studentskills .skillsIcons button{
+    background-color: transparent;
+    background: none;
+    border: none;
+    border-bottom: none;
+    font-size: 25px;
+    position: relative;
+    left: 825px;
+    top: -60px;
+
+}
+
+#studentskills button:hover{
+    background-color: aqua;
+}

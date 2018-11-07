@@ -1,6 +1,8 @@
 export class Post {
-    id: number;
+    id: Number;
     title: String;
     body: String;
-    autor: string;
+    author: String;
+    picture: String;
+    media: String;
   }

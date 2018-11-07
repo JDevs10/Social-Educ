@@ -1,0 +1,125 @@
+<h1>Login sign In</h1>
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h1>{{title}}</h1>
+            <h3>Bienvenu</h3>
+            <p>Plus que 30 seconds avant de postuler une école</p>
+            <input type="email" placeholder="address mail *" value="" />
+            <input type="password" placeholder="Mot de passe  *" value="" />   
+            <input type="submit" name="" value="S'identifier"/><br/>
+        </div>
+        <div class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="student-tab" data-toggle="tab" href="#student" role="tab" aria-controls="student" aria-selected="true">Etudiant</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="school-tab" data-toggle="tab" href="#school" role="tab" aria-controls="school" aria-selected="false">Ecole</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="student" role="tabpanel" aria-labelledby="student-tab">
+                    <h3 class="register-heading">Postuler en tant qu'étudiant</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nom *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Prénom *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="address mail *" value="" />
+                            </div>
+                            <div class="form-group">
+                                    <select class="form-control">
+                                        <option class="hidden"  selected disabled>Votre dernier diplôme</option>
+                                        <option>baccalauréat</option>
+                                        <option>BTS</option>
+                                        <option>DUT</option>
+                                        <option>Licence</option>
+                                        <option>Licence Pro</option>
+                                        <option>Bachelor</option>
+                                        <option>Master</option>
+                                    </select>
+                                </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nom du dernier diplôme *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <div class="maxl">
+                                    <label class="radio inline"> 
+                                        <input type="radio" name="gender" value="Homme" checked>
+                                        <span> Homme </span>
+                                    </label>
+                                    <label class="radio inline"> 
+                                        <input type="radio" name="gender" value="Femme">
+                                        <span> Femme </span> 
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Adresse postal *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Pays *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Code Postal *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Mot de passe  *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control"  placeholder="Confirmez le mot de passe *" value="" />
+                            </div>
+                            <input type="submit" class="btnRegister"  value="Enregistrer"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- School application -->
+                <div class="tab-pane fade show" id="school" role="tabpanel" aria-labelledby="school-tab">
+                    <h3  class="register-heading">Postuler en tant qu'école</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nom *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Téléphone *" value="" />
+                            </div>
+                            <div class="form-group">
+                              <input type="text" class="form-control" placeholder="Adresse de l'école *" value="" />
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Pays *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Code Postal *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Mot de passe *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Confirmez le mot de passe *" value="" />
+                            </div>
+                            <input type="submit" class="btnRegister"  value="Enregistrer"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Post } from './app/mock/post';
-import { POSTS } from './app/mock/mock-post';
-import { Observable, of } from 'rxjs';
+import { Observable, of, from } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
@@ -21,7 +20,12 @@ export class PostService {
     return this.http.get<Post[]>(this.urlGetPost, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 
-  addPost(title, autor,body : Post): any {
-    return this.http.put<Post[]>(this.urlAddPost, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  addPost(post: Post): Observable<Post> {
+    let body = `title=${post.title}&body=${post.body}&author=${post.author}&picture=${post.picture}&media${post.media}`;
+    let bodyll = `title=${post.title}&author=${post.author}&body=${post.body}&picture=${post.picture}&media=${post.media}`;
+
+    console.log("body: "+body+"\nbodyll: "+bodyll);
+    
+    return this.http.post<Post>(this.urlAddPost, bodyll, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 }
