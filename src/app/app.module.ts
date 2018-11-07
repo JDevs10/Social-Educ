@@ -5,6 +5,9 @@ import { WallComponent } from '../wall/wall.component';
 import { HttpClientModule }    from '@angular/common/http';
 import { LoginSignInComponent } from './LoginSignIn/login-sign-in/login-sign-in.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
+import { AppRoutingModule } from './app-routing.module';
+import { DetailPostComponent } from './detail-post/detail-post.component';
+
 
 
 @NgModule({
@@ -13,10 +16,12 @@ import { StudentProfileComponent } from './student-profile/student-profile.compo
     WallComponent,
     LoginSignInComponent,
     StudentProfileComponent,
+    DetailPostComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

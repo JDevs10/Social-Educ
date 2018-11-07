@@ -9,18 +9,16 @@ import { Post } from '../app/mock/post';
 })
 export class WallComponent implements OnInit {
   
-  //posts = POSTS;
   posts: Post[];
-  //selectedPost: Post;
 
   constructor(private postService: PostService) {}
 
-  getPost(): void {
-    this.postService.getPost().subscribe(posts => this.posts = posts);
+  getPosts(): void {
+    this.postService.getPosts().subscribe(posts => this.posts = posts);
   }
 
   ngOnInit() {
-    this.getPost();
+    this.getPosts();
   }
 
   addPost(title: String, author: String, body: String, picture: String, media: String): void{ 

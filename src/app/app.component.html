@@ -2,10 +2,10 @@
 <div style="text-align:center">
 
     <nav class="navbar navbar-dark bg-dark mb-5">
-        <a class="navbar-brand" href="/">Social Educ</a>
+        <a class="navbar-brand" routerLink="/wall">Social Educ</a>
         <div class="navbar-expand mr-auto">
           <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home</a>
+            <a class="nav-item nav-link active" routerLink="/wall">Home</a>
             <a class="nav-item nav-link" href="#">About</a>
             <a class="nav-item nav-link" href="#">Contact</a>
           </div>
@@ -25,9 +25,9 @@
         </div>
       </nav>
 
-    <app-wall></app-wall>
-    <app-login-sign-in></app-login-sign-in>
-    <app-student-profile></app-student-profile>
+    <!-- <app-wall></app-wall>
+    <app-login-sign-in></app-login-sign-in> -->
+    <router-outlet></router-outlet>
 
     <nav class="navbar navbar-dark bg-dark mt-5">
         <div class="navbar-expand m-auto navbar-text">

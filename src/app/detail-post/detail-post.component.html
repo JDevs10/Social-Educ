@@ -1,0 +1,50 @@
+<div class="grid-container">
+    <div class="grid-box box1">
+        <div class=" me-border">  <!--user profile info-->
+          <div> <img src="https://source.unsplash.com/random/200x50" alt="userCoverPicture"> </div>
+          <div class="userPic">  <img src="https://source.unsplash.com/random/75x75" alt="userPicture"> </div>
+          <div>Jean-Laurent Duzant</div>
+          <div>Étudiant(e) (ECE TECH)</div>
+      </div>
+    </div>
+    <div class="grid-box box2">
+        <h1>detail-post works!</h1>
+        <br>
+        <button (click)="goBack()">go back</button>
+    </div>
+    <div class="grid-box box3">
+        3 <a routerLink="/student-Profile">my profile</a>
+    </div>  
+    <div class="grid-box box4">
+        
+        <!-- show post -->
+        <div class="col-lg-12 col-md-4 p-3">
+            <!-- post info -->
+            <div class="row">
+                <div class="logo">
+                    picture here <br> {{post.picture}}
+                    <img src="https://source.unsplash.com/random/125x125" alt="">
+                </div>
+                <div class="postTitle">
+                    <h1>{{post.title}}</h1>
+                </div>
+            </div>
+
+            <!-- post contant -->
+            <div class="row text-left">
+                <div class="postBody col-lg-8">
+                    <p>{{post.body}}</p>
+                </div>
+                <div class="postMedia col-lg-4">
+                    {{post.media}}
+                    <img src="https://source.unsplash.com/random/250x250" alt="">
+                </div>
+            </div>
+
+            <!-- post from who/when -->
+            <div class="text-center">
+                <p>By {{post.author}} at {{post.date}} </p>
+            </div>
+        </div>
+    </div>
+  </div>

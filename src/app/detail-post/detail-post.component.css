@@ -1,0 +1,40 @@
+.userPic img{
+    background-size: cover; 
+    bottom: 35px;
+    position: relative;
+    border-radius: 100%;
+  }
+
+.postTitle{
+    text-align: center;
+    position: relative;
+    left: 100px;
+    top: 50px;
+}
+
+.postBody{
+    padding: 30px;
+}
+
+.grid-container {
+    display: grid;
+    grid-gap: 10px;
+    background-color: beige;
+    padding: 10px;
+  }
+  .grid-box {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+  }
+  .box1{
+    grid-column: 1;
+    grid-row: 1/ span 6;
+    width: 250px;
+  }
+  .box3{
+    grid-column: 3;
+    grid-row: 1/ span 6;
+    width: 250px;
+  }
