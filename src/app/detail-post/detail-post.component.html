@@ -8,15 +8,6 @@
       </div>
     </div>
     <div class="grid-box box2">
-        <h1>detail-post works!</h1>
-        <br>
-        <button (click)="goBack()">go back</button>
-    </div>
-    <div class="grid-box box3">
-        3 <a routerLink="/student-Profile">my profile</a>
-    </div>  
-    <div class="grid-box box4">
-        
         <!-- show post -->
         <div class="col-lg-12 col-md-4 p-3">
             <!-- post info -->
@@ -44,6 +35,76 @@
             <!-- post from who/when -->
             <div class="text-center">
                 <p>By {{post.author}} at {{post.date}} </p>
+            </div>
+
+            <!-- like / comment / share buttons -->
+            <div class="row text-center">
+                <div class="like-button">
+                    <button>Like</button>
+                </div>
+                <div class="like-comment">
+                    <button data-toggle="collapse" data-target="#Comment">Comment</button>
+                </div>
+                <div class="like-share">
+                    <button>Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid-box box3">
+        3 <a routerLink="/student-Profile">my profile</a>
+        <br>
+        <button (click)="goBack()">go back</button>
+    </div>  
+    <div class="grid-box box4">
+        <div class="collapse p-3" id="Comment">
+
+            <!-- comment form -->
+            
+            <div id="Comment-form">
+                <div class="row text-center p-3">
+                    <div class="profile-pic">
+                        <img src="https://source.unsplash.com/random/36x36" alt="">
+                    </div>
+                    <div class="comment-text">
+                        <textarea cols="62.9" rows="2" placeholder="Exprimez-vous..."></textarea>
+                    </div>
+                    <div class="comment-button">
+                        <button>Comment</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- show comment -->
+            <div id="Comment">
+               <div class="row text-center p-3">
+                    <div class="profile-pic">
+                        <img src="https://source.unsplash.com/random/36x36" alt="">
+                    </div>
+                    <div class="comment">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil animi, saepe nesciunt veniam totam blanditiis, corporis optio molestiae magnam commodi quam iure non nemo! Maxime obcaecati numquam quidem pariatur saepe.</p>
+                    </div>
+                    <div class="like-reply">
+                        <button>like</button>
+                        <button data-toggle="collapse" data-target="#Reply">Reply</button>
+                    </div>
+                </div> 
+            </div>
+            
+
+            <!-- comment reply -->
+            <div id="Reply" class="collapse text-left p-3">
+                <div class="row">
+                    <div class="profile-pic">
+                        <img src="https://source.unsplash.com/random/36x36" alt="">
+                    </div>
+                    <div class="comment pl-3">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil animi, saepe nesciunt veniam totam blanditiis, corporis optio molestiae magnam commodi quam iure non nemo! Maxime obcaecati numquam quidem pariatur saepe.</p>
+                    </div>
+                    <div class="pl-3">
+                        <button>Reply</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

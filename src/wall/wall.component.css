@@ -85,3 +85,8 @@ html body{
     grid-row: 1/ span 6;
     width: 250px;
   }
+
+  .postEditRow textarea{
+    border: none;
+    resize: none;
+  }

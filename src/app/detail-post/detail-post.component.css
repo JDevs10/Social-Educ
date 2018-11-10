@@ -38,3 +38,26 @@
     grid-row: 1/ span 6;
     width: 250px;
   }
+
+  div#Comment-form .comment-text textarea{
+    border: none;
+    padding-left: 10px;
+    resize: none;
+  }
+
+  div#Comment .comment{
+    width: 90%;
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  div#Reply{
+    width: 80%;
+    font-size: 80%;
+    position: relative;
+    left: 100px;
+  }
+
+  div#Reply .comment{
+    width: 80%;
+  }

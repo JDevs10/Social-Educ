@@ -1,39 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
 
-    <nav class="navbar navbar-dark bg-dark mb-5">
-        <a class="navbar-brand" routerLink="/wall">Social Educ</a>
-        <div class="navbar-expand mr-auto">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" routerLink="/wall">Home</a>
-            <a class="nav-item nav-link" href="#">About</a>
-            <a class="nav-item nav-link" href="#">Contact</a>
-          </div>
-        </div>
-        <div class="navbar-expand ml-auto navbar-nav">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" href="https://github.com/beeman" target="_blank">
-              <i class="fa fa-github"></i>
-            </a>
-            <a class="nav-item nav-link" href="https://twitter.com/beeman_nl" target="_blank">
-              <i class="fa fa-twitter"></i>
-            </a>
-            <a class="nav-item nav-link" href="https://medium.com/@beeman" target="_blank">
-              <i class="fa fa-medium"></i>
-            </a>
-          </div>
-        </div>
-      </nav>
+    <app-header></app-header>
 
     <!-- <app-wall></app-wall>
     <app-login-sign-in></app-login-sign-in> -->
     <router-outlet></router-outlet>
 
-    <nav class="navbar navbar-dark bg-dark mt-5">
-        <div class="navbar-expand m-auto navbar-text">
-          Made with <i class="fa fa-heart"></i> by <a href="https://twitter.com/beeman_nl">beeman</a>
-        </div>
-      </nav>
+    <app-footer></app-footer>
 
 </div>
 
