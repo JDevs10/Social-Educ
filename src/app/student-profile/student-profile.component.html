@@ -49,7 +49,7 @@
       depuis Avril 2000 jusqu'a 2000</p>
     </div>
     <div class="experienceIcons">
-      <button><i class="fa fa-plus"></i></button><br>
+      <button (click)="openForm();"><i class="fa fa-plus"></i></button><br>
       <button><i class="fa fa-pencil"></i></button>
     </div>
   </div>
@@ -57,89 +57,103 @@
 </div>
 
 <!-- student experience form insert -->
-<div class="container form-popup-experience" id="myExperienceForm">
-  <h2>Add expérience</h2>
-
+<div class="container">
+  <div class="form-popup-experience" id="myExperienceForm">
+  <h2 class="text-center">Add expérience</h2>
+  <button (click)="closeForm();" class="hiddenFormIcons"><i class="fa fa-times"></i></button>
+  
   <p>Titre</p>
-  <input type="text" placeholder="Ex: Manager, employee ..." #title>
-  <p>Entreprise</p>
-  <input type="text" placeholder="Ex: Microsoft, Boeing ..." #entreprise>
-  <p>Lieu</p>
-  <input type="text" placeholder="Ex: Paris, France" #location>
-  <div class="row text-center">
-    <div class="text-left">
-        <p>De: </p>
-        <select name="months-from">
-            <option value="Mois">Mois</option>
-            <option value="Janvier">Janvier</option>
-            <option value="Février">Février</option>
-            <option value="Mars">Mars</option>
-            <option value="Avril">Avril</option>
-            <option value="Mai">Mai</option>
-            <option value="Juin">Juin</option>
-            <option value="Juillet">Juillet</option>
-            <option value="Aout">Aout</option>
-            <option value="Septembre">Septembre</option>
-            <option value="Octobre">Octobre</option>
-            <option value="Novembre">Novembre</option>
-            <option value="Décembre">Décembre</option>
+  <input class="field-size" type="text" placeholder="Ex: Manager, employee ..." #title>
+  <br>
+  <label>Entreprise</label><br>
+  <input class="field-size" type="text" placeholder="Ex: Microsoft, Boeing ..." #entreprise>
+  <br>
+  <label>Lieu</label><br>
+  <input class="field-size" type="text" placeholder="Ex: Paris, France" #location>
+  <br><br>
+
+  <div class="container">
+    <div class="row">
+      <div>
+        <p>De:</p>
+        <select name="months-from" class="field-size-dropDownList">
+          <option value="Mois">Mois</option>
+          <option value="Janvier">Janvier</option>
+          <option value="Février">Février</option>
+          <option value="Mars">Mars</option>
+          <option value="Avril">Avril</option>
+          <option value="Mai">Mai</option>
+          <option value="Juin">Juin</option>
+          <option value="Juillet">Juillet</option>
+          <option value="Aout">Aout</option>
+          <option value="Septembre">Septembre</option>
+          <option value="Octobre">Octobre</option>
+          <option value="Novembre">Novembre</option>
+          <option value="Décembre">Décembre</option>
+        </select>
+        <br>
+        <select name="year-from" class="field-size-dropDownList">
+          <option value="Année">Année</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2010">2010</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
+          <option value="2007">2007</option>
           </select>
-          <select name="year-from">
-            <option value="Année">Année</option>
-            <option value="2018">2018</option>
-            <option value="2017">2017</option>
-            <option value="2016">2016</option>
-            <option value="2015">2015</option>
-            <option value="2014">2014</option>
-            <option value="2013">2013</option>
-            <option value="2012">2012</option>
-            <option value="2011">2011</option>
-            <option value="2010">2010</option>
-            <option value="2009">2009</option>
-            <option value="2008">2008</option>
-            <option value="2007">2007</option>
-          </select>
-    </div>
-    <div class="text-left">
-        <p>&Aacute;: </p>
-        <select name="months-to">
-            <option value="Mois">Mois</option>
-            <option value="Janvier">Janvier</option>
-            <option value="Février">Février</option>
-            <option value="Mars">Mars</option>
-            <option value="Avril">Avril</option>
-            <option value="Mai">Mai</option>
-            <option value="Juin">Juin</option>
-            <option value="Juillet">Juillet</option>
-            <option value="Aout">Aout</option>
-            <option value="Septembre">Septembre</option>
-            <option value="Octobre">Octobre</option>
-            <option value="Novembre">Novembre</option>
-            <option value="Décembre">Décembre</option>
-          </select>
-          <select name="year-to">
-            <option value="Année">Année</option>
-            <option value="2018">2018</option>
-            <option value="2017">2017</option>
-            <option value="2016">2016</option>
-            <option value="2015">2015</option>
-            <option value="2014">2014</option>
-            <option value="2013">2013</option>
-            <option value="2012">2012</option>
-            <option value="2011">2011</option>
-            <option value="2010">2010</option>
-            <option value="2009">2009</option>
-            <option value="2008">2008</option>
-            <option value="2007">2007</option>
-          </select>
+      </div>
+      <div id="months-to-id">
+        <p>&Agrave;: </p>
+        <select name="months-to" class="field-size-dropDownList">
+          <option value="Mois">Mois</option>
+          <option value="Janvier">Janvier</option>
+          <option value="Février">Février</option>
+          <option value="Mars">Mars</option>
+          <option value="Avril">Avril</option>
+          <option value="Mai">Mai</option>
+          <option value="Juin">Juin</option>
+          <option value="Juillet">Juillet</option>
+          <option value="Aout">Aout</option>
+          <option value="Septembre">Septembre</option>
+          <option value="Octobre">Octobre</option>
+          <option value="Novembre">Novembre</option>
+          <option value="Décembre">Décembre</option>
+        </select>
+        <br>
+        <select name="year-to" class="field-size-dropDownList">
+          <option value="Année">Année</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2010">2010</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
+          <option value="2007">2007</option>
+        </select>
+      </div>
+      <div id="show-present-txt" style="display:none;"><p>Pr&egrave;sent</p></div>
     </div>
   </div>
-  <div class="row">
-    <input type="checkbox">
-    <p>Je travaille actuellement dans ce rôle</p>
+  <br>
+  <input type="checkbox" id="working-now-checkbox" (click)="actualRole();">
+  <label>Je travaille actuellement dans ce rôle</label>
+  <br>
+  <label>Description</label>  <br>
+  <textarea class="field-size" rows="10" placeholder="Exprimez-vous..."></textarea>
+  <br>
+  <button class="save-form-popup-experience">Enregistrer</button>
   </div>
-    <label>Description</label>  <br>
-    <textarea cols="30" rows="10" placeholder="Exprimez-vous"></textarea>
 </div>
 
 <br>

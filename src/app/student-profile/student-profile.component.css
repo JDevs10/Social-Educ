@@ -80,6 +80,10 @@
     border-bottom: none;
 }
 
+#studentExperience .experienceIcons button:hover{
+    color: beige;
+}
+
 /* Student Education */
 #studentEducation{
     background-color: bisque;
@@ -104,6 +108,10 @@
     background: none;
     border: none;
     border-bottom: none;
+}
+
+#studentEducation .educationIcons button:hover{
+    color: beige;
 }
 
 /* Student Skills */
@@ -133,6 +141,71 @@
 
 }
 
-#studentskills button:hover{
-    background-color: aqua;
+#studentskills .skillsIcons button:hover{
+    background-color: beige;
+}
+
+/* Hidden form-popup-experience */
+ #myExperienceForm{
+    display: none;
+    width: 29%;
+    height: 630px;
+    z-index: 20;
+    padding: 5px;
+    position: fixed;
+    left: 30%;
+    top: 20px;
+} 
+
+.form-popup-experience{
+    background-color: silver;
+    width: 50%;
+    height: 50%;
+    text-align: left;
+}
+
+.form-popup-experience textarea{
+    resize: none;
+    border: none;
+    height: 100px;
+}
+
+.field-size{
+    width: 100%;
+}
+
+.field-size-dropDownList{
+    width: 207px;
+}
+
+.hiddenFormIcons{
+    background-color: transparent;
+    color: white;
+    background: none;
+    border: none;
+    border-bottom: none;
+    position: relative;
+    left: 375px;
+    bottom: 50px;
+    font-size: 30px;
+}
+
+.hiddenFormIcons:hover{
+    color: beige;
+}
+
+#myExperienceForm input[type="checkbox"]{
+    height: 25px;
+    width:  25px;
+}
+
+.save-form-popup-experience{
+    background-color: transparent;
+    border: none;
+    position: relative;
+    left: 325px;
+}
+
+.save-form-popup-experience:hover{
+    background-color: beige;
 }
