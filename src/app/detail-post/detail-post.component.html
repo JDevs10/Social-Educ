@@ -13,7 +13,7 @@
             <!-- post info -->
             <div class="row">
                 <div class="logo">
-                    picture here <br> {{post.picture}}
+                    picture here {{post.picture}} <br>
                     <img src="https://source.unsplash.com/random/125x125" alt="">
                 </div>
                 <div class="postTitle">
@@ -23,7 +23,7 @@
 
             <!-- post contant -->
             <div class="row text-left">
-                <div class="postBody col-lg-8">
+                <div class="postBody col-lg-7">
                     <p>{{post.body}}</p>
                 </div>
                 <div class="postMedia col-lg-4">
@@ -38,24 +38,31 @@
             </div>
 
             <!-- like / comment / share buttons -->
-            <div class="row text-center">
+            <div class="show-nb-Like-Comments">
+                <hr>
+                <p>7 Likes | 5 Comments</p>     <!--{{comments.count(id)}}-->
+                <hr> 
+            </div>
+            <div class="row text-center ButtonStyle">
                 <div class="like-button">
-                    <button>Like</button>
+                    <button><i class="fa fa-thumbs-up"></i> Like</button>
                 </div>
                 <div class="like-comment">
-                    <button data-toggle="collapse" data-target="#Comment">Comment</button>
+                    <button data-toggle="collapse" data-target="#Comment"><i class="fa fa-commenting"></i> Comment</button>
                 </div>
                 <div class="like-share">
-                    <button>Share</button>
+                    <button><i class="fa fa-share"></i> Share</button>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="grid-box box3">
         3 <a routerLink="/student-Profile">my profile</a>
         <br>
         <button (click)="goBack()">go back</button>
-    </div>  
+    </div> 
+
     <div class="grid-box box4">
         <div class="collapse p-3" id="Comment">
 
@@ -67,45 +74,32 @@
                         <img src="https://source.unsplash.com/random/36x36" alt="">
                     </div>
                     <div class="comment-text">
-                        <textarea cols="62.9" rows="2" placeholder="Exprimez-vous..."></textarea>
+                        <textarea cols="62.9" rows="2" placeholder="Exprimez-vous..." #comment></textarea>
                     </div>
-                    <div class="comment-button">
-                        <button>Comment</button>
+                    <div class="ButtonStyle">
+                        <button (click)="addComment(' ', 'JL', ' ', comment.value); comment.value ='';"><i class="fa fa-commenting"></i></button>
                     </div>
+                    <!-- hello world, test from angular post detail comments -->
                 </div>
             </div>
 
             <!-- show comment -->
-            <div id="Comment">
-               <div class="row text-center p-3">
+            <div id="Comment" class="p-3" *ngFor="let comment of comments;">
+               <div class="row text-center">
                     <div class="profile-pic">
+                        {{comment.userPicture}}
                         <img src="https://source.unsplash.com/random/36x36" alt="">
                     </div>
                     <div class="comment">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil animi, saepe nesciunt veniam totam blanditiis, corporis optio molestiae magnam commodi quam iure non nemo! Maxime obcaecati numquam quidem pariatur saepe.</p>
+                        <p>{{comment.userName}}</p>
+                        <p>{{comment.comment}}</p>
                     </div>
-                    <div class="like-reply">
-                        <button>like</button>
-                        <button data-toggle="collapse" data-target="#Reply">Reply</button>
+                    <div class="ButtonStyle">
+                        <button><i class="fa fa-thumbs-up"></i> like</button>
+                        <button data-toggle="collapse" data-target="#Reply"><i class="fa fa-reply"></i> Reply</button>
                     </div>
-                </div> 
-            </div>
-            
-
-            <!-- comment reply -->
-            <div id="Reply" class="collapse text-left p-3">
-                <div class="row">
-                    <div class="profile-pic">
-                        <img src="https://source.unsplash.com/random/36x36" alt="">
-                    </div>
-                    <div class="comment pl-3">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil animi, saepe nesciunt veniam totam blanditiis, corporis optio molestiae magnam commodi quam iure non nemo! Maxime obcaecati numquam quidem pariatur saepe.</p>
-                    </div>
-                    <div class="pl-3">
-                        <button>Reply</button>
-                    </div>
-                </div>
-            </div>
+                </div>        
+            </div> 
         </div>
     </div>
-  </div>
+</div>

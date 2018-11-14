@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { PostService } from '../../post.service';
 import { Post } from '../mock/post';
+import { CommentService } from '../../comment.service';
+import { Comment } from '../mock/comments';
 
 
 @Component({
@@ -12,14 +14,19 @@ import { Post } from '../mock/post';
 })
 export class DetailPostComponent implements OnInit {
 
-  post: Post[];
+  post: Post;
+  comments: Comment[];
+  nbOfComments: Comment;
 
   constructor(private route: ActivatedRoute,
     private postService: PostService,
+    private commentService: CommentService,
     private location: Location) {}
 
   ngOnInit() {
     this.getPost();
+    this.getPostComments();
+    this.getPostTotalNumberComments();
   }
 
   getPost(): void{
@@ -27,8 +34,29 @@ export class DetailPostComponent implements OnInit {
     this.postService.getPost(id).subscribe(post => this.post = post);
   }
 
+  getPostComments(): void{
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.commentService.getPostComments(id).subscribe(comments => this.comments = comments);
+  }
+
+  getPostTotalNumberComments(): void{
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.commentService.getPostTotalNumberComments(id).subscribe(comments => this.nbOfComments = comments);
+  }
+
+  addComment(idPost: Number, userName: String, userPicture: String, comment: String): void{
+    const id = +this.route.snapshot.paramMap.get('id');
+    idPost = id;
+    userName = userName.trim();
+    userPicture = userPicture.trim();
+    comment = comment.trim();
+
+    if(!comment){return;}
+    this.commentService.addComment({ idPost, userName, userPicture, comment } as Comment, id)
+    .subscribe(comment => {this.comments.unshift(comment);});
+  }
+
   goBack(): void {
     this.location.back();
   }
-
 }

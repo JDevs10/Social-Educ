@@ -5,4 +5,5 @@ export class Post {
     author: String;
     picture: String;
     media: String;
+    numberOfLikes: Number;
   }

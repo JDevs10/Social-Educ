@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { Post } from '../app/mock/post';
+import { post } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-wall',
@@ -30,7 +31,6 @@ export class WallComponent implements OnInit {
 
     if(!title){return;}
     this.postService.addPost({ title, author, body, picture, media } as Post)
-    .subscribe(post => {this.posts.push(post);});
+    .subscribe(post => {this.posts.unshift(post);});
   }
-
 }

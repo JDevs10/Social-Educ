@@ -8,12 +8,8 @@
         </div>
       </div>
       <div class="grid-box box2">
-          <form>
             <div class="text-left">
               <p><input type="text" placeholder="Post Title..." #postTitle></p>
-              <p><input type="text" placeholder="Post Author..." #postAuthor></p>
-              <p><input type="text" placeholder="Post Picture..." #postPicture></p>
-              <p><input type="text" placeholder="Post Media..." #postMedia></p>
             </div>
             
               <div class="postEditRow"> <!--row-->
@@ -23,15 +19,14 @@
 
                   <div class="form-control-file">
                   <input type="file" >
-                      <button type="submit" (click)="addPost(postTitle.value, postAuthor.value, postBody.value, postPicture.value, postMedia.value); 
+                      <button (click)="addPost(postTitle.value, 'Jean-Laurent', postBody.value, '...', '...'); 
                       postTitle.value=''; postAuthor.value=''; postBody.value=''; postPicture.value=''; postMedia.value='';"> Post</button>    
                   </div>
               </div>   
-            </form>   <!-- form area ends-->
       </div>
       <div class="grid-box box3">3 <a routerLink="/student-Profile">my profile</a></div>  
       <div class="grid-box box4">
-          <div class="container p-2" *ngFor="let post of posts">
+          <div class="container p-2" *ngFor="let post of posts;">
               <div class="row col-lg-12 col-md-4">
                   <!-- profile post info -->
                   <div class="logo bg-light">

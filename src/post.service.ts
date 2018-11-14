@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Post } from './app/mock/post';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { post } from 'selenium-webdriver/http';
 
 
 @Injectable({
@@ -20,8 +19,8 @@ export class PostService {
     return this.http.get<Post[]>(this.url+"/api/blog", {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 
-  getPost(id: Number): Observable<Post[]>{
-    return this.http.get<Post[]>(this.url+"/api/post/detail/"+id, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  getPost(id: Number): Observable<Post>{
+    return this.http.get<Post>(this.url+"/api/post/detail/"+id, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 
   addPost(post: Post): Observable<Post> {

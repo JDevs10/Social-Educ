@@ -31,12 +31,16 @@
   .box1{
     grid-column: 1;
     grid-row: 1/ span 6;
-    width: 250px;
+    width: 230px;
   }
   .box3{
     grid-column: 3;
     grid-row: 1/ span 6;
-    width: 250px;
+    width: 230px;
+  }
+
+  div#Comment{
+    text-align: left;
   }
 
   div#Comment-form .comment-text textarea{
@@ -45,10 +49,26 @@
     resize: none;
   }
 
+  .ButtonStyle button{
+    background-color: transparent;
+    border: none;
+  }
+
   div#Comment .comment{
     width: 90%;
     text-align: left;
     padding-left: 10px;
+  }
+
+  .show-nb-Like-Comments hr{
+    margin: 5px;
+    text-align: left;
+  }
+  
+  .show-nb-Like-Comments p{
+    margin: 0;
+    font-size: 15px;
+    text-align: left;
   }
 
   div#Reply{
