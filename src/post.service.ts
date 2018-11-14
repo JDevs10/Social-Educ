@@ -10,6 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class PostService {
   
   private url = 'http://localhost/Social/web/index.php';
+  private i: Number;
 
   constructor(private http: HttpClient) { }
 

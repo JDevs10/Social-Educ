@@ -5,6 +5,7 @@ import { PostService } from '../../post.service';
 import { Post } from '../mock/post';
 import { CommentService } from '../../comment.service';
 import { Comment } from '../mock/comments';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class DetailPostComponent implements OnInit {
 
   post: Post;
   comments: Comment[];
-  nbOfComments: Comment;
+  //nbComments: Number;
 
   constructor(private route: ActivatedRoute,
     private postService: PostService,
@@ -41,7 +42,13 @@ export class DetailPostComponent implements OnInit {
 
   getPostTotalNumberComments(): void{
     const id = +this.route.snapshot.paramMap.get('id');
-    this.commentService.getPostTotalNumberComments(id).subscribe(comments => this.nbOfComments = comments);
+    this.commentService.getPostTotalNumberComments(id).subscribe(post => this.post = post);
+    //this.commentService.getPostTotalNumberComments(id).subscribe(nbComments => {this.nbComments = nbComments.nbComments});
+  }
+
+  addLike(): void{
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.commentService.addLike(id).subscribe(post => this.post = post);
   }
 
   addComment(idPost: Number, userName: String, userPicture: String, comment: String): void{

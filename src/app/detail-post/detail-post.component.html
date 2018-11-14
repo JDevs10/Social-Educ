@@ -40,12 +40,12 @@
             <!-- like / comment / share buttons -->
             <div class="show-nb-Like-Comments">
                 <hr>
-                <p>7 Likes | 5 Comments</p>     <!--{{comments.count(id)}}-->
+                <p>{{post.numberOfLikes}} Likes | {{post.numberOfComments}} Comments</p>  <!-- {{nbComments}} -->
                 <hr> 
             </div>
             <div class="row text-center ButtonStyle">
                 <div class="like-button">
-                    <button><i class="fa fa-thumbs-up"></i> Like</button>
+                    <button (click)="addLike();"><i class="fa fa-thumbs-up"></i> Like</button>
                 </div>
                 <div class="like-comment">
                     <button data-toggle="collapse" data-target="#Comment"><i class="fa fa-commenting"></i> Comment</button>
@@ -60,12 +60,11 @@
     <div class="grid-box box3">
         3 <a routerLink="/student-Profile">my profile</a>
         <br>
-        <button (click)="goBack()">go back</button>
+        <button (click)="goBack();">go back</button>
     </div> 
 
     <div class="grid-box box4">
         <div class="collapse p-3" id="Comment">
-
             <!-- comment form -->
             
             <div id="Comment-form">
