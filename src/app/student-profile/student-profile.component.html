@@ -1,3 +1,4 @@
+
 <!-- student general info -->
 <div class="container grid-container" id="studentGeneral">
   <div class="grid-box box1">
@@ -5,7 +6,7 @@
   </div>
   <div class="grid-box box2">
     <p>Jean-Laurent Duzant</p>
-    <p>étudiant/e ({{actualSchool}} Ece Tech)</p>
+    <p>étudiant ({{actualSchool}} Ece Tech)</p> <!-- etudiante if user is a female-->
   </div>
   <div class="grid-box box3">
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima, officia commodi saepe, ipsa quis soluta excepturi eius suscipit facere molestias maxime libero delectus aperiam non vel deserunt distinctio cupiditate officiis?
@@ -49,35 +50,38 @@
       depuis Avril 2000 jusqu'a 2000</p>
     </div>
     <div class="experienceIcons">
-      <button (click)="openForm();"><i class="fa fa-plus"></i></button><br>
+      <button (click)="openExperienceForm();"><i class="fa fa-plus"></i></button><br>
       <button><i class="fa fa-pencil"></i></button>
     </div>
   </div>
   <hr>
 </div>
 
-<!-- student experience form insert -->
+<!-- student hidden experience form insert -->
 <div class="container">
   <div class="form-popup-experience" id="myExperienceForm">
   <h2 class="text-center">Add expérience</h2>
-  <button (click)="closeForm();" class="hiddenFormIcons"><i class="fa fa-times"></i></button>
+  <button (click)="closeExperienceForm();
+  titleExperience.value='';entrepriseExperience.value='';locationExperience.value='';deMonthFromExperience.value='';
+  deYearFromExperience.value='';aMonthToExperience.value='';aYearToExperience.value='';;descriptionExperience.value='';"
+  class="hiddenFormIcons"><i class="fa fa-times"></i></button><br>
   
-  <p>Titre</p>
-  <input class="field-size" type="text" placeholder="Ex: Manager, employee ..." #title>
+  <span>Titre</span>
+  <input class="field-size" type="text" placeholder="Ex: Manager, employee ..." #titleExperience>
   <br>
   <label>Entreprise</label><br>
-  <input class="field-size" type="text" placeholder="Ex: Microsoft, Boeing ..." #entreprise>
+  <input class="field-size" type="text" placeholder="Ex: Microsoft, Boeing ..." #entrepriseExperience>
   <br>
   <label>Lieu</label><br>
-  <input class="field-size" type="text" placeholder="Ex: Paris, France" #location>
+  <input class="field-size" type="text" placeholder="Ex: Paris, France" #locationExperience>
   <br><br>
 
   <div class="container">
     <div class="row">
       <div>
         <p>De:</p>
-        <select name="months-from" class="field-size-dropDownList">
-          <option value="Mois">Mois</option>
+        <select name="months-from" class="field-size-dropDownList" #deMonthFromExperience>
+          <option value="">Mois</option>
           <option value="Janvier">Janvier</option>
           <option value="Février">Février</option>
           <option value="Mars">Mars</option>
@@ -92,8 +96,8 @@
           <option value="Décembre">Décembre</option>
         </select>
         <br>
-        <select name="year-from" class="field-size-dropDownList">
-          <option value="Année">Année</option>
+        <select name="year-from" class="field-size-dropDownList" #deYearFromExperience>
+          <option value="">Année</option>
           <option value="2018">2018</option>
           <option value="2017">2017</option>
           <option value="2016">2016</option>
@@ -110,8 +114,8 @@
       </div>
       <div id="months-to-id">
         <p>&Agrave;: </p>
-        <select name="months-to" class="field-size-dropDownList">
-          <option value="Mois">Mois</option>
+        <select name="month-to" class="field-size-dropDownList" #aMonthToExperience>
+          <option value="">Mois</option>
           <option value="Janvier">Janvier</option>
           <option value="Février">Février</option>
           <option value="Mars">Mars</option>
@@ -126,8 +130,8 @@
           <option value="Décembre">Décembre</option>
         </select>
         <br>
-        <select name="year-to" class="field-size-dropDownList">
-          <option value="Année">Année</option>
+        <select name="year-to" class="field-size-dropDownList" #aYearToExperience>
+          <option value="">Année</option>
           <option value="2018">2018</option>
           <option value="2017">2017</option>
           <option value="2016">2016</option>
@@ -142,7 +146,7 @@
           <option value="2007">2007</option>
         </select>
       </div>
-      <div id="show-present-txt" style="display:none;"><p>Pr&egrave;sent</p></div>
+      <div id="show-present-txt" style="display:none;"><p>Pr&eacute;sent</p></div>
     </div>
   </div>
   <br>
@@ -150,9 +154,9 @@
   <label>Je travaille actuellement dans ce rôle</label>
   <br>
   <label>Description</label>  <br>
-  <textarea class="field-size" rows="10" placeholder="Exprimez-vous..."></textarea>
+  <textarea class="field-size" rows="2" placeholder="Exprimez-vous..." #descriptionExperience></textarea>
   <br>
-  <button class="save-form-popup-experience">Enregistrer</button>
+  <button class="save-form-popup">Enregistrer</button>
   </div>
 </div>
 
@@ -171,11 +175,102 @@
         depuis Avril 2000 jusqu'a 2000</p>
       </div>
       <div class="educationIcons">
-        <button><i class="fa fa-plus"></i></button><br>
+        <button (click)="openEducationForm();"><i class="fa fa-plus"></i></button><br>
         <button><i class="fa fa-pencil"></i></button>
       </div>
     </div>
     <hr>
+  </div>
+
+  <!-- student hidden education form insert -->
+  <div class="container form-popup-education text-left" id="myEducationForm">
+    <div>
+      <h2 class="text-center">Ajouter une &eacute;cole</h2><br>
+      <button (click)="closeEducationForm();ecoleEducation.value='';diplomeEducation.value='';
+      domaineEducation.value='';niveauEducation.value='';anneeFromEducation.value='';anneeToEducation.value='';
+      descriptionEducation.value='';" class="hiddenFormIcons"><i class="fa fa-times"></i></button>
+    </div>
+    <div>
+      <span>&Eacute;cole</span><br>
+      <input class="field-size" type="text" placeholder="Ex: Ece Tech..." #ecoleEducation>
+    </div>
+    <br>
+    <div>
+      <span>Diplôme</span><br>
+      <input class="field-size" type="text" placeholder="Ex: Ece Tech..." #diplomeEducation>
+    </div>
+    <br>
+    <div>
+      <span>Domaine d'&eacute;tude</span><br>
+      <input class="field-size" type="text" placeholder="Ex: Ece Tech..." #domaineEducation>
+    </div>
+    <br>
+    <span>Niveau</span><br>
+    <select class="field-size" name="niveau-bac" id="select-niveau-bac" #niveauEducation>
+      <option value="">Selectionne votre niveau &eacute;tude</option>
+      <option value="Bac">Bac</option>
+      <option value="Bac 1">Bac 1</option>
+      <option value="Bac 2">Bac 2</option>
+      <option value="Bac 3">Bac 3</option>
+      <option value="Bac 4">Bac 4</option>
+      <option value="Bac 5">Bac 5</option>
+      <option value="Bac 6">Bac 6</option>
+      <option value="Bac 7">Bac 7</option>
+      <option value="Bac 8">Bac 8</option>
+    </select>
+    <br>
+    <br>
+
+    <div class="container row">
+      <div>
+        <span>À partir de l'année </span><br>
+        <select class="field-size" name="year-from" #anneeFromEducation>
+          <option value="">Année</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2010">2010</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
+          <option value="2007">2007</option>
+        </select>
+      </div>
+      <pre>   </pre>
+      <div>
+        <span> À l'année (ou prévu)</span><br>
+        <select class="field-size" name="year-to" #anneeToEducation>
+          <option value="">Année</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+          <option value="2017">2017</option>
+          <option value="2016">2016</option>
+          <option value="2015">2015</option>
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+          <option value="2011">2011</option>
+          <option value="2010">2010</option>
+          <option value="2009">2009</option>
+          <option value="2008">2008</option>
+          <option value="2007">2007</option>
+        </select>
+      </div>
+    </div><br>
+
+    <span>Description</span><br>
+    <textarea class="field-size" rows="3" placeholder="Exprimez-vous" #descriptionEducation></textarea><br>
+    <button class="save-form-popup">Enregistrer</button>
   </div>
 
   <br>
