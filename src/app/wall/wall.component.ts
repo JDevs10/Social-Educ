@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../post.service';
-import { Post } from '../app/mock/post';
-import { post } from 'selenium-webdriver/http';
+import { PostService } from '../../post.service';
+import { Post } from '../mock/post';
 
 @Component({
   selector: 'app-wall',

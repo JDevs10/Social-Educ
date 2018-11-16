@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
-import { WallComponent } from '../wall/wall.component';
+import { WallComponent } from './wall/wall.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { DetailPostComponent } from './detail-post/detail-post.component';
 
