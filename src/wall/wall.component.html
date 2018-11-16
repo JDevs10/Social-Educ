@@ -24,27 +24,29 @@
                   </div>
               </div>   
       </div>
-      <div class="grid-box box3">3 <a routerLink="/student-Profile">my profile</a></div>  
+      <div class="grid-box box3">3 
+            <a routerLink="/student-Profile">my profile</a>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore quasi ex blanditiis excepturi amet ullam cumque facere eaque distinctio, animi illum labore soluta sint at vero eum? Alias, fugit veritatis!</p>
+        </div>  
       <div class="grid-box box4">
+
+        
+
           <div class="container p-2" *ngFor="let post of posts;">
-              <div class="row col-lg-12 col-md-4">
+              <div class="row bg-light">
                   <!-- profile post info -->
-                  <div class="logo bg-light">
+                <div class="post-logo pl-1">
                       <img src="/assets/logo_90.png" alt="Logo 100" width="auto" height="auto" class="img-thumbnail" />
+                </div>
+                <div class="col-lg-7 col-md-5 post-content pl-2">
+                    <div class="bg-light">
+                    <a routerLink="/detail/{{post.id}}"><h4>{{post.title}}</h4></a>
+                    <p>{{post.body}}</p>
                     </div>
-                  <div class="bg-light col-lg-7 col-md-5">
-                      <div class="d-flex flex-column">
-                          <div>
-                                <!-- School profile pic -->  
-                                <div class="content text-left" style="font-size: 14px;">
-                                    <a routerLink="/detail/{{post.id}}"><h4>{{post.title}}</h4></a>
-                                    <p>{{post.body}}</p>
-                                </div>
-                          </div>
-                      </div>
-                  </div>
+                </div>
+                    
                   <!-- left post box -->
-                  <div class="date bg-light col-lg-3 col-md-5">
+                  <div class="col-lg-3 col-md-5 post-date pl-2">
                     <P>Poste a {{post.date}}</P>
                   </div>             
               </div>

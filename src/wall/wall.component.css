@@ -11,82 +11,95 @@ html body{
   border-radius: 100%;
 }
 
-.me-border{
+.me-border{ 
   border: #607D8B;
 }
 
-.selected {
-    background-color: #CFD8DC !important;
-    color: white;
-  }
-  .posts {
-    margin: 0 0 2em 0;
-    list-style-type: none;
-    padding: 0;
-    width: 15em;
-  }
-  .posts li {
-    cursor: pointer;
-    position: relative;
-    left: 0;
-    background-color: #EEE;
-    margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
-    border-radius: 4px;
-  }
-  .posts li.selected:hover {
-    background-color: #BBD8DC !important;
-    color: white;
-  }
-  .posts li:hover {
-    color: #607D8B;
-    background-color: #DDD;
-    left: .1em;
-  }
-  .posts .text {
-    position: relative;
-    top: -3px;
-  }
-  .posts .badge {
-    display: inline-block;
-    font-size: small;
-    color: white;
-    padding: 0.8em 0.7em 0 0.7em;
-    background-color: #607D8B;
-    line-height: 1em;
-    position: relative;
-    left: -1px;
-    top: -4px;
-    height: 1.8em;
-    margin-right: .8em;
-    border-radius: 4px 0 0 4px;
+  .postEditRow textarea{
+    border: none;
+    resize: none;
   }
 
   .grid-container {
     display: grid;
-    grid-gap: 10px;
+    grid-gap: 5px;
     background-color: beige;
     padding: 10px;
   }
   .grid-box {
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     font-size: 20px;
+    float: left;
   }
   .box1{
     grid-column: 1;
-    grid-row: 1/ span 6;
+    grid-row: 1/ span 2;
     width: 250px;
+    height: 350px;
   }
   .box3{
     grid-column: 3;
-    grid-row: 1/ span 6;
+    grid-row: 1/ span 2;
     width: 250px;
+    height: 350px;
+  }
+ 
+   .post-logo{
+    width: 100px;
   }
 
-  .postEditRow textarea{
-    border: none;
-    resize: none;
+  .post-content{
+    width: 500px;
+    height: auto;
+    text-align: left;
+    position: static;
   }
+
+  .post-date{
+    width: 200px;
+  } 
+
+  /* responsive post-date */
+  @media(max-width: 1325px){
+    .post-content{
+      width: unset;
+    }
+
+    .post-date{
+      width: 300px;
+      text-align: left;
+    }
+  }
+
+  /* responsive wall */
+  @media(max-width: 990px){
+    .box1{
+        grid-column: 1;
+        grid-row: 1/ span 1;
+        width: auto;
+        height: 350px;
+      }
+  
+      .box2{
+        grid-column: 1;
+        grid-row: 2/ span 1;
+        width: auto;
+        height: auto;
+      }
+  
+      .box3{
+        grid-column: 1;
+        grid-row: 3/ span 1;
+        width: auto;
+        height: auto;
+      }
+  
+      .box4{
+        grid-column: 1;
+        grid-row: 4/ span 1;
+        width: auto;
+      }
+
+}
