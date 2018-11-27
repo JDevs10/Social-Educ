@@ -1,3 +1,17 @@
+/* Div pop-up */
+#pop-up{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(90, 90, 90, 0.5);
+    z-index: 9999;
+}
+
 /* Student General */
 #studentGeneral{
     background-color: bisque;   
@@ -121,12 +135,24 @@
 }
 
 #studentskills button{
-    position: relative;
-    left: 825px;
-    top: -25px;
     background-color: transparent;
     background: none;
     border: none;
+}
+
+#studentskills .addButtonIcon{
+    color: black;
+    font-size: 25px;
+    position: relative;
+    left: 830px;
+}
+
+#studentskills .deleteButtonIcon{
+    color: black;
+    font-size: 20px;
+    position: relative;
+    left: 1035px;
+    top: -10px;
 }
 
 #studentskills .skillsIcons button{
@@ -148,17 +174,19 @@
 /* Hidden form-popup-experience */
  #myExperienceForm{
     display: none;
-    width: 29%;
-    height: 630px;
+    width: 36%;
+    height: 500px;
     z-index: 20;
     padding: 5px;
-    position: fixed;
+    position: absolute;
     left: 35%;
-    top: 20px;
+    top: 50px;
 } 
 
 .form-popup-experience{
     background-color: silver;
+    background-attachment: fixed;
+    overflow-y: auto;
     width: 50%;
     height: 50%;
     text-align: left;
@@ -213,13 +241,14 @@
 /* Hidden form-popup-education */
 #myEducationForm{
     display: none;
-    width: 29%;
-    height: 630px;
+    width: 35%;
+    height: 500px;
     z-index: 20;
     padding: 5px;
     position: fixed;
     left: 35%;
     top: 20px;
+    overflow-y: auto;
 }
 
 .form-popup-education{

@@ -51,7 +51,7 @@ export class DetailPostComponent implements OnInit {
     this.commentService.addLike(id).subscribe(post => this.post = post);
   }
 
-  addComment(idPost: Number, userName: String, userPicture: String, comment: String): void{
+  addComment(idPost: any, userName: String, userPicture: String, comment: String): void{
     const id = +this.route.snapshot.paramMap.get('id');
     idPost = id;
     userName = userName.trim();
@@ -60,7 +60,7 @@ export class DetailPostComponent implements OnInit {
 
     if(!comment){return;}
     this.commentService.addComment({ idPost, userName, userPicture, comment } as Comment, id)
-    .subscribe(comment => {this.comments.unshift(comment);});
+    .subscribe(comments => {this.comments = comments;});
   }
 
   goBack(): void {

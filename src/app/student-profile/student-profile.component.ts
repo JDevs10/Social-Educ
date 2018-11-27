@@ -25,19 +25,35 @@ export class StudentProfileComponent implements OnInit {
   }
   
 openExperienceForm(): void {
-  document.getElementById("myExperienceForm").style.display = "block";
+  var div_pop_up = document.getElementById("pop-up");
+  var expForm = document.getElementById("myExperienceForm");
+
+  div_pop_up.style.display = "block";
+  expForm.style.display = "block";
 }
 
 closeExperienceForm(): void {
-  document.getElementById("myExperienceForm").style.display = "none";
+  var div_pop_up = document.getElementById("pop-up");
+  var expForm = document.getElementById("myExperienceForm");
+
+  div_pop_up.style.display = "none";
+  expForm.style.display = "none";
 }
 
 openEducationForm(): void {
-  document.getElementById("myEducationForm").style.display = "block";
+  var div_pop_up = document.getElementById("pop-up");
+  var expForm = document.getElementById("myEducationForm");
+
+  div_pop_up.style.display = "block";
+  expForm.style.display = "block";
 }
 
 closeEducationForm(): void {
-  document.getElementById("myEducationForm").style.display = "none";
+  var div_pop_up = document.getElementById("pop-up");
+  var expForm = document.getElementById("myEducationForm");
+
+  div_pop_up.style.display = "none";
+  expForm.style.display = "none";
 }
 
 actualRole(): void {

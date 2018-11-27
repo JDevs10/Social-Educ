@@ -40,7 +40,7 @@
             <!-- like / comment / share buttons -->
             <div class="show-nb-Like-Comments">
                 <hr>
-                <p>{{post.numberOfLikes}} Likes | {{post.numberOfComments}} Comments</p>  <!-- {{nbComments}} -->
+                <p>{{post.numberOfLikes}} Likes | {{comments.length}} Comments</p>  <!-- {{nbComments}} -->
                 <hr> 
             </div>
             <div class="row text-center ButtonStyle">
@@ -76,7 +76,7 @@
                         <textarea cols="62.9" rows="2" placeholder="Exprimez-vous..." #comment></textarea>
                     </div>
                     <div class="ButtonStyle">
-                        <button (click)="addComment(' ', 'JL', ' ', comment.value); comment.value ='';"><i class="fa fa-commenting"></i></button>
+                        <button (click)="addComment('100', 'JL', '', comment.value); comment.value ='';"><i class="fa fa-commenting"></i></button>
                     </div>
                     <!-- hello world, test from angular post detail comments -->
                 </div>
