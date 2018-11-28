@@ -10,7 +10,7 @@ import { DetailPostComponent } from './detail-post/detail-post.component';
 const routes: Routes = [
   { path: '', redirectTo: '/wall', pathMatch: 'full'},
   { path: 'wall', component: WallComponent},
-  { path: 'student-Profile', component: StudentProfileComponent},
+  { path: 'student-Profile/:id', component: StudentProfileComponent},
   { path: 'detail/:id', component: DetailPostComponent}
 ];
 

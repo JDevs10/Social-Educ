@@ -7,21 +7,26 @@
   titleExperience.value='';entrepriseExperience.value='';locationExperience.value='';deMonthFromExperience.value='';
   deYearFromExperience.value='';aMonthToExperience.value='';aYearToExperience.value='';;descriptionExperience.value='';"
   class="hiddenFormIcons"><i class="fa fa-times"></i></button><br>
+
+  <p>les champs qui ont le * doivent être rempli</p>
   
-  <span>Titre</span>
+  <span>Titre *</span>
   <input class="field-size" type="text" placeholder="Ex: Manager, employee ..." #titleExperience>
   <br>
-  <label>Entreprise</label><br>
+  <label>Entreprise *</label><br>
   <input class="field-size" type="text" placeholder="Ex: Microsoft, Boeing ..." #entrepriseExperience>
   <br>
   <label>Lieu</label><br>
   <input class="field-size" type="text" placeholder="Ex: Paris, France" #locationExperience>
+  <br>
+  <label>SiteWeb</label><br>
+  <input class="field-size" type="text" placeholder="Ex: https://www.google.com" #webSiteExperience>
   <br><br>
 
   <div class="container">
     <div class="row">
       <div>
-        <p>De:</p>
+        <p>De: *</p>
         <select name="months-from" class="field-size-dropDownList" #deMonthFromExperience>
           <option value="">Mois</option>
           <option value="Janvier">Janvier</option>
@@ -55,7 +60,7 @@
           </select>
       </div>
       <div id="months-to-id">
-        <p>&Agrave;: </p>
+        <p>&Agrave;: *</p>
         <select name="month-to" class="field-size-dropDownList" #aMonthToExperience>
           <option value="">Mois</option>
           <option value="Janvier">Janvier</option>
@@ -98,8 +103,14 @@
   <label>Description</label>  <br>
   <textarea class="field-size" rows="2" placeholder="Exprimez-vous..." #descriptionExperience></textarea>
   <br>
-  <button class="save-form-popup">Enregistrer</button>
+  <button class="save-form-popup" (click)="addExperience(titleExperience.value, entrepriseExperience.value, 
+  locationExperience.value, webSiteExperience.value, deMonthFromExperience.value, deYearFromExperience.value, aMonthToExperience.value,
+  aYearToExperience.value, descriptionExperience.value);
+  titleExperience.value=''; entrepriseExperience.value=''; locationExperience.value=''; webSiteExperience.value='';
+  deMonthFromExperience.value=''; deYearFromExperience.value=''; aMonthToExperience.value='';
+  aYearToExperience.value=''; descriptionExperience.value='';">Enregistrer</button>
   </div>
+
 </div>
 
 <!-- student hidden education form insert -->
@@ -144,7 +155,7 @@
   
     <div class="container row">
       <div>
-        <span>À partir de l'année </span><br>
+        <span id="valid-at-title">Validé en</span><br>
         <select class="field-size" name="year-from" #anneeFromEducation>
           <option value="">Année</option>
           <option value="2018">2018</option>
@@ -162,8 +173,8 @@
         </select>
       </div>
       <pre>   </pre>
-      <div>
-        <span> À l'année (ou prévu)</span><br>
+      <div id="valid-to">
+        <span>Prévu en</span><br>
         <select class="field-size" name="year-to" #anneeToEducation>
           <option value="">Année</option>
           <option value="2025">2025</option>
@@ -187,14 +198,43 @@
           <option value="2007">2007</option>
         </select>
       </div>
-    </div><br>
-  
+    </div>
+    <br>
+    <input type="checkbox" id="valid-diploma-checkbox" (click)="diplomaValidation();">
+    <label> Diplôme en cour</label>
+    <br>
     <span>Description</span><br>
     <textarea class="field-size" rows="3" placeholder="Exprimez-vous" #descriptionEducation></textarea><br>
-    <button class="save-form-popup">Enregistrer</button>
+    <button (click)="addEducation(ecoleEducation.value,diplomeEducation.value,domaineEducation.value,
+    niveauEducation.value,anneeFromEducation.value,anneeToEducation.value,descriptionEducation.value);
+    ecoleEducation.value='';diplomeEducation.value='';domaineEducation.value='';niveauEducation.value='';
+    anneeFromEducation.value='';anneeToEducation.value='';descriptionEducation.value='';"
+    class="save-form-popup">Enregistrer</button>
   </div>
 </div>
 
+<!-- student hidden skill pop-up form -->
+<div class="container">
+    <div class="form-popup-skill" id="mySkillForm">
+        <h2 class="text-center">Ajouter un Compétence</h2>
+        <br>
+        <button (click)="closeSkillForm();skillName.value='';"class="hiddenFormIcons"><i class="fa fa-times"></i></button>
+        <br><br><br>
+        <label>Ajouter votre compétence:</label><br>
+        <input type="text" placeholder="Ex: Java, Communication..." #skillName><br>
+        <button (click)="addSkill(skillName.value); skillName.value='';" class="save-form-popup">Enregistrer</button>
+    </div>
+</div>
+
+<!-- student hidden modification pop-up for all form -->
+<div class="container">
+  <div class="form-popup-all" id="allFrom">
+
+  </div>
+  <div>
+
+  </div>
+</div>
 
 </div>
 <!-- student general info -->
@@ -235,22 +275,28 @@
 
 <!-- student experience -->
 <div class="container" id="studentExperience">
-  <h1>Expérience</h1>
-  <div class="row p-4">
-    <div class="image">
-      <img src="https://source.unsplash.com/random/100x100" alt="icon-entreprice">
-    </div>
-    <div class="experienceText">
-      <p>Titre <br>
-      Nom de l'entreprise <br>
-      lieu de l'entreprise <br>
-      <a href="####">Lien du site internet</a> <br>
-      depuis Avril 2000 jusqu'a 2000</p>
-    </div>
-    <div class="experienceIcons">
-      <button (click)="openExperienceForm();"><i class="fa fa-plus"></i></button><br>
-      <button><i class="fa fa-pencil"></i></button>
-    </div>
+  <div class="row experienceTop">
+      <h1>Expérience</h1>
+      <button (click)="openExperienceForm();"><i class="fa fa-plus"></i></button>
+  </div>
+  <div *ngFor="let experience of experience;">
+    <div class="row p-4">
+        <div class="image">
+          <img src="https://source.unsplash.com/random/100x100" alt="icon-entreprice">
+        </div>
+        <div class="experienceText">
+          <p>{{experience.Title}}<br>
+            {{experience.CompanyName}} <br>
+            {{experience.CompanyAddress}} <br>
+          <a href="{{experience.companyWebSite}}">Lien du site internet</a> <br>
+          {{experience.Period}}</p>
+          <P>{{experience.Description}}</P>
+        </div>
+        <div class="experienceModifyIcons">
+          <button (click)="modifyExperiencePost(experience.id, 0);"><i class="fa fa-pencil"></i></button>
+        </div>
+      </div>
+      <hr>
   </div>
   <hr>
 </div>
@@ -260,20 +306,24 @@
 
 <!-- student education -->
 <div class="container" id="studentEducation">
-    <h1>Education</h1>
-    <div class="row p-4">
-      <div class="image">
-        <img src="https://source.unsplash.com/random/100x100" alt="icon-entreprice">
-      </div>
-      <div class="educationText">
-        <p>Nom de l'école <br>
-        Nom du diplome <br>
-        depuis Avril 2000 jusqu'a 2000</p>
-      </div>
-      <div class="educationIcons">
-        <button (click)="openEducationForm();"><i class="fa fa-plus"></i></button><br>
-        <button><i class="fa fa-pencil"></i></button>
-      </div>
+    <div class="row educationTop">
+        <h1>Education</h1>
+        <button (click)="openEducationForm();"><i class="fa fa-plus"></i></button>
+    </div>
+    <div *ngFor="let education of education;">
+      <div class="row p-4">
+          <div class="image">
+            <img src="https://source.unsplash.com/random/100x100" alt="icon-entreprice">
+          </div>
+          <div class="educationText">
+            <p>{{education.SchoolName}} <br>
+            {{education.Diploma}} <br>
+            {{education.Period}} </p> <!--depuis Avril 2000 jusqu'a 2000-->
+          </div>
+          <div class="educationModifyIcons">
+            <button (click)="modifyEducationPost(education.id, 1);"><i class="fa fa-pencil"></i></button>
+          </div>
+        </div>
     </div>
     <hr>
   </div>
@@ -284,10 +334,17 @@
 <div class="container" id="studentskills">
     <div class="container row">
        <h1>Compétences</h1>
-    <button class="addButtonIcon"><i class="fa fa-plus"></i></button>
+    <button (click)="openSkillForm();" class="addButtonIcon"><i class="fa fa-plus"></i></button>
     </div>
     <br>  
-    <div class="container row">
-      <p>skill 1 <button class="deleteButtonIcon"><i class="fa fa-trash-o"></i></button></p>
+    <div *ngFor="let skill of skill;">
+      <div class="container row">
+        <div class="skillText">
+            <p>{{skill.SkillName}} </p>
+        </div>
+        <button (click)="modifySkillPost(skill.id, 2);"><i class="fa fa-pencil"></i></button><br>
+        <button (click)="deleteSkill(skill.id)" class="deleteButtonIcon"><i class="fa fa-trash-o"></i></button>
+      </div>
+      <hr>
     </div>
   </div>

@@ -77,24 +77,34 @@
 .experienceText{
     text-align: left;
     padding-left: 50px;
+    width: 80%;
 }
 
-.experienceIcons{
+.experienceTop h1{
+    padding: 10px;
+}
+
+.experienceTop button{
+    color: black;
+    font-size: 30px;
+}
+
+.experienceModifyIcons{
     color: black;
     font-size: 30px;
     position: relative;
-    left: 700px;
+    left: auto;
     top: -10px;
 }
 
-#studentExperience .experienceIcons button{
+#studentExperience button{
     background-color: transparent;
     background: none;
     border: none;
     border-bottom: none;
 }
 
-#studentExperience .experienceIcons button:hover{
+#studentExperience button:hover{
     color: beige;
 }
 
@@ -107,24 +117,34 @@
 .educationText{
     text-align: left;
     padding-left: 50px;
+    width: 80%;
 }
 
-.educationIcons{
+.educationTop h1{
+    padding: 10px;
+}
+
+.educationTop button{
+    color: black;
+    font-size: 30px;
+}
+
+.educationModifyIcons{
     color: black;
     font-size: 30px;
     position: relative;
-    left: 700px;
+    left: auto;
     top: -10px;
 }
 
-#studentEducation .educationIcons button{
+#studentEducation button{
     background-color: transparent;
     background: none;
     border: none;
     border-bottom: none;
 }
 
-#studentEducation .educationIcons button:hover{
+#studentEducation button:hover{
     color: beige;
 }
 
@@ -143,17 +163,17 @@
 #studentskills .addButtonIcon{
     color: black;
     font-size: 25px;
-    position: relative;
-    left: 830px;
-    
+}
+
+#studentskills .skillText{
+    text-align: left;
+    padding-left: 50px;
+    width: 90%;
 }
 
 #studentskills .deleteButtonIcon{
     color: black;
     font-size: 20px;
-    position: relative;
-    left: 1035px;
-    top: -10px;
 }
 
 #studentskills .skillsIcons button{
@@ -172,6 +192,7 @@
     background-color: beige;
 }
 
+
 /* Hidden form-popup-experience */
  #myExperienceForm{
     display: none;
@@ -186,7 +207,6 @@
 
 .form-popup-experience{
     background-color: silver;
-    background-attachment: fixed;
     overflow-y: auto;
     width: 50%;
     height: 50%;
@@ -252,9 +272,67 @@
     overflow-y: auto;
 }
 
+#myEducationForm input[type="checkbox"]{
+    height: 25px;
+    width:  25px;
+}
+
+#myEducationForm #valid-to{
+    display: none;
+}
+
 .form-popup-education{
     background-color: silver;
     width: 50%;
     height: 50%;
     text-align: left;
+}
+
+/* Hidden form-popup-skill */
+#mySkillForm{
+    display: none;
+    width: 35%;
+    z-index: 20;
+    padding: 5px;
+    position: fixed;
+    left: 35%;
+    top: 20px;
+}
+
+.form-popup-skill{
+    background-color: silver;
+    width: 50%;
+    text-align: left;
+}
+
+/* All hidden pop-up forms */
+#allFrom{
+    display: none;
+    width: 35%;
+    height: 500px;
+    z-index: 20;
+    padding: 5px;
+    position: fixed;
+    left: 35%;
+    top: 20px;
+    overflow-y: auto;
+}
+
+.form-popup-all{
+    background-color: silver;
+    width: 50%;
+    height: 50%;
+    text-align: left;
+}
+
+#allFrom #experienceForm{
+    display: none;
+}
+
+#allFrom #educationForm{
+    display: none;
+}
+
+#allFrom #skillForm{
+    display: none;
 }

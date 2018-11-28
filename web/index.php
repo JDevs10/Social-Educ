@@ -130,6 +130,7 @@ $app->post('/api/post/detail/{id}/addComment', function (Request $request, $id) 
     return json_encode($comment_post);
 });
 
+
 //to insert the number of likes
 $app->post('/api/post/detail/{id}/addLike', function (Request $request, $id) use ($app){
     $sql = "SELECT numberOfLikes FROM posts WHERE id = ?";
@@ -174,13 +175,108 @@ $app->get('/api/post/detail/{id}/numberComments', function ($id) use ($app){
     return json_encode($post);
 });
 
-/*
-$app->post('/api/post', function (Request $request) use ($app, $blogPosts) {
-    $title = $request->get('title');
-    $posts = $app['db']->fetchAll('SELECT * FROM Posts');
 
-    return new Response('Thank you for your feedback! '.$title."\n\n".json_encode($posts));
+// Student profile api's
+//get all the experience posts from student
+$app->get('/api/student/{id}/experience', function ($id) use ($app){
+    $sql = 'SELECT * FROM experience where IdStudent = ?';
+    $experience = $app['db']->fetchAll($sql,  array((int) $id));
+
+    return json_encode($experience);
 });
-*/
+
+//add a experience post from a student
+$app->post('/api/student/{id}/experience/addExperience', function (Request $request, $id) use ($app){
+    $IdStudent = $request->get('IdStudent');
+    $title = $request->get('Title');
+    $companyName = $request->get('CompanyName');
+    $companyAddress = $request->get('CompanyAddress');
+    $companyWebSite = $request->get('CompanyWebSite');
+    $period = $request->get('Period');
+    $description = $request->get('Description');
+
+    $app['db']->insert('experience', $list = array(
+        'IdStudent'         => $IdStudent,
+        'Title'             => $title,
+        'CompanyName'       => $companyName,
+        'CompanyAddress'    => $companyAddress,
+        'CompanyWebSite'    => $companyWebSite,
+        'Period'            => $period,
+        'Description'       => $description
+    ));
+
+    $sql = "SELECT * FROM experience WHERE IdStudent = ?";
+    $experience_post = $app['db']->fetchAll($sql, array((int) $id));
+
+    return json_encode($experience_post);
+});
+
+//get all the education posts from student
+$app->get('/api/student/{id}/education', function ($id) use ($app){
+    $sql = 'SELECT * FROM education where IdStudent = ?';
+    $education = $app['db']->fetchAll($sql,  array((int) $id));
+
+    return json_encode($education);
+});
+
+//add a education post from a student
+$app->post('/api/student/{id}/education/addEducation', function (Request $request, $id) use ($app){
+    $IdStudent = $request->get('IdStudent');
+    $schoolName = $request->get('SchoolName');
+    $diploma = $request->get('Diploma');
+    $fieldOfStudy = $request->get('FieldOfStudy');
+    $diplomaLevel = $request->get('DiplomaLevel');
+    $period = $request->get('Period');
+    $description = $request->get('Description');
+
+    $app['db']->insert('education', $list = array(
+        'IdStudent'     => $IdStudent,
+        'SchoolName'    => $schoolName,
+        'Diploma'       => $diploma,
+        'FieldOfStudy'  => $fieldOfStudy,
+        'DiplomaLevel'  => $diplomaLevel,
+        'Period'        => $period,
+        'Description'   => $description
+    ));
+
+    $sql = "SELECT * FROM education WHERE IdStudent = ?";
+    $education_post = $app['db']->fetchAll($sql, array((int) $id));
+
+    return json_encode($education_post);
+});
+
+//get all the skill posts from student
+$app->get('/api/student/{id}/skill', function ($id) use ($app){
+    $sql = 'SELECT * FROM skills where IdStudent = ?';
+    $skill = $app['db']->fetchAll($sql,  array((int) $id));
+
+    return json_encode($skill);
+});
+
+//add a skill post from a student
+$app->post('/api/student/{id}/skill/addSkill', function (Request $request, $id) use ($app){
+    $IdStudent = $request->get('IdStudent');
+    $skillName = $request->get('SkillName');
+
+    $app['db']->insert('skills', $list = array(
+        'IdStudent'     => $IdStudent,
+        'SkillName'    => $skillName
+    ));
+
+    $sql = "SELECT * FROM skills WHERE IdStudent = ?";
+    $education_post = $app['db']->fetchAll($sql, array((int) $id));
+
+    return json_encode($education_post);
+});
+
+//remove a skill post from s student
+$app->get('/api/student/{id1}/skill/{id2}/delete',  function ($id1,$id2) use($app){
+    $sql = "DELETE FROM skills WHERE id = ?";
+    $post = $app['db']->executeQuery($sql, array((int) $id2));
+
+    $sql = "SELECT * FROM skills WHERE IdStudent = ?";
+    $get_the_remaining_skills = $app['db']->fetchAll($sql, array((int) $id1));
+    return json_encode($get_the_remaining_skills);
+});
 
 $app->run();
