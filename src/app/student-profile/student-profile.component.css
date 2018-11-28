@@ -188,8 +188,16 @@
 
 }
 
-#studentskills .skillsIcons button:hover{
-    background-color: beige;
+#studentskills button:hover{
+    color: beige;
+}
+
+.skillModifyIcons{
+    color: black;
+    font-size: 30px;
+    position: relative;
+    left: auto;
+    top: -10px;
 }
 
 
@@ -303,6 +311,10 @@
     background-color: silver;
     width: 50%;
     text-align: left;
+}
+
+.skillModifyIcons{
+
 }
 
 /* All hidden pop-up forms */

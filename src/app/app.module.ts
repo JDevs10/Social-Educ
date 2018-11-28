@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DetailPostComponent } from './detail-post/detail-post.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ModificationFormComponent } from './modification-form/modification-form.component';
 
 
 
@@ -21,6 +22,7 @@ import { FooterComponent } from './footer/footer.component';
     DetailPostComponent,
     HeaderComponent,
     FooterComponent,
+    ModificationFormComponent,
   ],
   imports: [
     BrowserModule,

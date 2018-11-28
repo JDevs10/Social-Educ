@@ -228,11 +228,8 @@
 
 <!-- student hidden modification pop-up for all form -->
 <div class="container">
-  <div class="form-popup-all" id="allFrom">
-
-  </div>
-  <div>
-
+  <div class="form-popup-all" id="allFrom" routerLink="/student-Profile/1/form-modification/:id">
+    <p>hello world</p>
   </div>
 </div>
 
@@ -340,10 +337,12 @@
     <div *ngFor="let skill of skill;">
       <div class="container row">
         <div class="skillText">
-            <p>{{skill.SkillName}} </p>
+          <p>{{skill.SkillName}} </p>
         </div>
-        <button (click)="modifySkillPost(skill.id, 2);"><i class="fa fa-pencil"></i></button><br>
-        <button (click)="deleteSkill(skill.id)" class="deleteButtonIcon"><i class="fa fa-trash-o"></i></button>
+        <div class="skillModifyIcons row">
+          <button (click)="modifySkillPost(skill.id, 2);"><i class="fa fa-pencil"></i></button><br>
+          <button (click)="deleteSkill(skill.id)" class="deleteButtonIcon"><i class="fa fa-trash-o"></i></button>
+        </div>
       </div>
       <hr>
     </div>
