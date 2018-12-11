@@ -46,6 +46,13 @@ export class DetailPostComponent implements OnInit {
     //this.commentService.getPostTotalNumberComments(id).subscribe(nbComments => {this.nbComments = nbComments.nbComments});
   }
 
+  postDelete(): void{
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.postService.postDelete(id).subscribe(post => this.post = post);
+    this.location.back();
+    // this.route.navigate(['/foo-content', 'bar-contents', 'baz-content', 'page'], this.params.queryParams);
+  }
+
   addLike(): void{
     const id = +this.route.snapshot.paramMap.get('id');
     this.commentService.addLike(id).subscribe(post => this.post = post);
@@ -61,6 +68,10 @@ export class DetailPostComponent implements OnInit {
     if(!comment){return;}
     this.commentService.addComment({ idPost, userName, userPicture, comment } as Comment, id)
     .subscribe(comments => {this.comments = comments;});
+  }
+
+  deleteComment(idComment: Number): void{
+    this.commentService.deleteComment(idComment).subscribe(comments => {comments = comments;});
   }
 
   goBack(): void {

@@ -34,5 +34,9 @@ export class CommentService {
     return this.http.post<Comment[]>(this.url+"/api/post/detail/"+id+"/addComment", body, 
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
+  
+  deleteComment(idComment: Number): Observable<Comment>{
+    return this.http.get<Comment>(this.url+"/api/post/detail/"+idComment+"/comments/delet", {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+  }
 
 }

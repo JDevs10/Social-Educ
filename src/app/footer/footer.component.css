@@ -1,0 +1,11 @@
+.navbar-setup{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+
+.navbar-setup i{
+    color: red;
+}
+
+.navbar-setup p{
+    color: white;
+}

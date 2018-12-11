@@ -43,7 +43,7 @@ $app->get('/api/blog', function () use ($app) {
 });
 
 //modify a post on my wall
-$app->post('/api/post/{id}', function (Request $request, $id) use($app) {
+$app->post('api/post/{id}/modify', function (Request $request, $id) use($app) {
     $sql = "SELECT * FROM posts WHERE id = ?";
     $post = $app['db']->fetchAssoc($sql, array((int) $id));
 
@@ -64,6 +64,9 @@ $app->post('/api/post/{id}', function (Request $request, $id) use($app) {
         $media,
         (int) $id
     ));
+
+    $sql = "SELECT * FROM posts";
+    $post = $app['db']->fetchAll($sql);
     return json_encode($post);
 });
 
@@ -99,9 +102,13 @@ $app->post('api/post', function (Request $request) use($app){
 $app->get('api/blog/{id}/delete',  function ($id) use($app){
     $sql = "DELETE FROM posts WHERE id = ?";
     $post = $app['db']->executeQuery($sql, array((int) $id));
+
+    $sql = "SELECT * FROM posts";
+    $post = $app['db']->fetchAll($sql);
     return json_encode($post);
 });
 
+// ===================================== COMMENT ==============================================
 //to get all comments of a post
 $app->get('/api/post/detail/{id}/comments', function($id) use ($app) {
     //$sql = $app['db']->fetchAll('SELECT * from comments WHERE idPost = '.$id.' ORDER BY id DESC ');
@@ -128,6 +135,16 @@ $app->post('/api/post/detail/{id}/addComment', function (Request $request, $id) 
     $comment_post = $app['db']->fetchAll($sql, array((int) $id));
 
     return json_encode($comment_post);
+});
+
+//to delete a cooment of a post
+$app->get('/api/post/detail/{id}/comments/delete',  function ($id) use($app){
+    $sql = "DELETE FROM comments WHERE id = ?";
+    $post = $app['db']->executeQuery($sql, array((int) $id));
+
+    $sql = "SELECT * FROM comments";
+    $comments = $app['db']->fetchAll($sql);
+    return json_encode($comments);
 });
 
 

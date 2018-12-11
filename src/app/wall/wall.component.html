@@ -9,18 +9,18 @@
       </div>
       <div class="grid-box box2">
             <div class="text-left">
-              <p><input type="text" placeholder="Post Title..." #postTitle></p>
+              <p><input type="text" placeholder="Title..." #postTitle></p>
             </div>
             
               <div class="postEditRow"> <!--row-->
                 <div class="form-group">
-                    <textarea type="text" class="form-control float-left" rows="3" placeholder="Exprimez-vous..." #postBody></textarea>
+                    <textarea type="text" class="form-control float-left" rows="3" placeholder="Express yourself..." #postBody></textarea>
                   </div>
 
                   <div class="form-control-file">
-                  <input type="file" >
-                      <button (click)="addPost(postTitle.value, 'Jean-Laurent', postBody.value, '...', '...'); 
-                      postTitle.value=''; postBody.value='';"> Post</button>    
+                  <input type="text" placeholder=" Your url..." #postMedia>
+                      <button (click)="addPost(postTitle.value, 'Jean-Laurent', postBody.value, 'https://source.unsplash.com/random/75x75', postMedia.value); 
+                      postTitle.value=''; postBody.value=''; postMedia.value='';"> Post</button>    
                   </div>    <!--postAuthor.value=''; postPicture.value=''; postMedia.value='';-->
               </div>   
       </div>
@@ -32,11 +32,11 @@
 
         
 
-          <div class="container p-2" *ngFor="let post of posts;">
+          <div class="container p-3" *ngFor="let post of posts;">
               <div class="row bg-light">
                   <!-- profile post info -->
                 <div class="post-logo pl-1">
-                      <img src="/assets/logo_90.png" alt="Logo 100" width="auto" height="auto" class="img-thumbnail" />
+                      <img src="https://source.unsplash.com/random/75x75" alt="Logo 100" width="auto" height="auto" class="img-thumbnail" />
                 </div>
                 <div class="col-lg-7 col-md-5 post-content pl-2">
                     <div class="bg-light">

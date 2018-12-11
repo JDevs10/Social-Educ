@@ -29,4 +29,15 @@ export class PostService {
 
     return this.http.post<Post>(this.url+"/api/post", body, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
+
+  modifyPost(post: Post, id: Number): Observable<Post>{
+    let body = `title=${post.title}&body=${post.body}&media=${post.media}`;
+
+    return this.http.post<Post>(this.url+"/api/post/"+id+"/modify", body, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  }
+
+  postDelete(id: Number): Observable<Post>{
+    return this.http.get<Post>(this.url+"/api/blog/"+id+"/delete", {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  }
+
 }

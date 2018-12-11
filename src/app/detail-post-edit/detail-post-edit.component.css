@@ -6,10 +6,15 @@
   }
 
 .postTitle{
-    text-align: center;
-    position: relative;
-    left: 100px;
-    top: 50px;
+  padding: 30px 30px 5px 30px;
+}
+
+.postBody{
+  padding: 30px 30px 5px 30px;
+}
+
+.postMedia{
+  margin-top: 30px;
 }
 
 div#button-option button{
@@ -29,8 +34,16 @@ div#button-option button:hover{
   font-size: 27px;
 }
 
-.postBody{
-    padding: 30px;
+div#valide button{
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  font-size: 25px;
+}
+
+div#valide button:hover{
+  background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+  color: white;
 }
 
 .grid-container {
@@ -59,47 +72,4 @@ div#button-option button:hover{
     grid-column: 3;
     grid-row: 1/ span 6;
     width: 230px;
-  }
-
-  div#Comment{
-    text-align: left;
-  }
-
-  div#Comment-form .comment-text textarea{
-    border: none;
-    padding-left: 10px;
-    resize: none;
-  }
-
-  .ButtonStyle button{
-    background-color: transparent;
-    border: none;
-  }
-
-  div#Comment .comment{
-    width: 90%;
-    text-align: left;
-    padding-left: 10px;
-  }
-
-  .show-nb-Like-Comments hr{
-    margin: 5px;
-    text-align: left;
-  }
-  
-  .show-nb-Like-Comments p{
-    margin: 0;
-    font-size: 15px;
-    text-align: left;
-  }
-
-  div#Reply{
-    width: 80%;
-    font-size: 80%;
-    position: relative;
-    left: 100px;
-  }
-
-  div#Reply .comment{
-    width: 80%;
   }

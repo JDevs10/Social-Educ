@@ -1,0 +1,44 @@
+<div class="grid-container">
+  <div class="grid-box box1">
+      <div class=" me-border">  <!--user profile info-->
+        <div> <img src="https://source.unsplash.com/random/200x50" alt="userCoverPicture"> </div>
+        <div class="userPic">  <img src="https://source.unsplash.com/random/75x75" alt="userPicture"> </div>
+        <div>Jean-Laurent Duzant</div>
+        <div>Étudiant(e) (ECE TECH)</div>
+    </div>
+  </div>
+  <div class="grid-box box2">
+      <!-- show post -->
+      <div class="col-lg-12 col-md-4 p-3">
+          <!-- post info -->
+          <div class="row">
+              <div class="postTitle">
+                  <h1><span>Title: </span><input type="text" value="{{post.title}}" placeholder="Write a title..." #postTitle></h1>
+              </div>
+          </div>
+
+          <!-- post contant -->
+          <div class="row text-left">
+              <div class="postBody col-lg-7">
+                <textarea cols="30" rows="10" value="{{post.body}}" placeholder="Write some cotent..." #postBody></textarea>
+              </div>
+              <div class="postMedia col-lg-4">
+                <span>Media</span>
+                <input type="text" value="{{post.media}}" placeholder="Write your media post url" #postMedia>
+              </div>
+          </div>
+      </div>
+      <div id="valide">
+        <button (click)="modifyPost(postTitle.value, postBody.value, postMedia.value);
+        postTitle.value=''; postBody.value=''; postMedia.value='';">Reset <i class="fa fa-check"></i></button>
+      </div>
+  </div>
+
+  <div class="grid-box box3">
+      3 <a routerLink="/student-Profile/1">my profile</a>
+      <br>
+      <button (click)="goBack();">go back</button>
+  </div> 
+
+
+</div>

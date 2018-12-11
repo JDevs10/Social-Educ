@@ -6,6 +6,7 @@ import { WallComponent } from './wall/wall.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { DetailPostComponent } from './detail-post/detail-post.component';
 import { ModificationFormComponent } from './modification-form/modification-form.component';
+import { DetailPostEditComponent } from './detail-post-edit/detail-post-edit.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'wall', component: WallComponent},
   { path: 'student-Profile/:id', component: StudentProfileComponent},
   { path: 'detail/:id', component: DetailPostComponent},
+  { path: 'detail/:id/edit', component: DetailPostEditComponent},
   { path: 'student-Profile/:id/form-modification/:id-fm', component: ModificationFormComponent}
 ];
 

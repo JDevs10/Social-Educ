@@ -11,10 +11,6 @@ html body{
   border-radius: 100%;
 }
 
-.me-border{ 
-  border: #607D8B;
-}
-
   .postEditRow textarea{
     border: none;
     resize: none;
@@ -23,7 +19,7 @@ html body{
   .grid-container {
     display: grid;
     grid-gap: 5px;
-    background-color: beige;
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
     padding: 10px;
   }
   .grid-box {
@@ -32,6 +28,7 @@ html body{
     padding: 5px;
     font-size: 20px;
     float: left;
+    border-radius: 10px;
   }
   .box1{
     grid-column: 1;

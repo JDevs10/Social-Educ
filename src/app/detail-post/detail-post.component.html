@@ -13,11 +13,14 @@
             <!-- post info -->
             <div class="row">
                 <div class="logo">
-                    picture here {{post.picture}} <br>
-                    <img src="https://source.unsplash.com/random/125x125" alt="">
+                    <img src="{{post.picture}}" alt="">
                 </div>
                 <div class="postTitle">
                     <h1>{{post.title}}</h1>
+                </div>
+                <div id="button-option">
+                    <button><a routerLink="/detail/{{post.id}}/edit"><i class="fa fa-pencil-square-o"></i></a></button>
+                    <button (click)="postDelete();"><i class="fa fa-trash-o"></i></button>
                 </div>
             </div>
 
@@ -27,14 +30,13 @@
                     <p>{{post.body}}</p>
                 </div>
                 <div class="postMedia col-lg-4">
-                    {{post.media}}
-                    <img src="https://source.unsplash.com/random/250x250" alt="">
+                    <img src="{{post.media}}" alt="">
                 </div>
             </div>
 
-            <!-- post from who/when -->
+            <!-- post from who/when  also edit and delete option by the user-->
             <div class="text-center">
-                <p>By {{post.author}} at {{post.date}} </p>
+                <p>By {{post.author}} at {{post.date}} </p> 
             </div>
 
             <!-- like / comment / share buttons -->
@@ -51,14 +53,14 @@
                     <button data-toggle="collapse" data-target="#Comment"><i class="fa fa-commenting"></i> Comment</button>
                 </div>
                 <div class="like-share">
-                    <button><i class="fa fa-share"></i> Share</button>
+                    <button><i class="far fa-share-square"></i> Share</button>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="grid-box box3">
-        3 <a routerLink="/student-Profile">my profile</a>
+        3 <a routerLink="/student-Profile/1">my profile</a>
         <br>
         <button (click)="goBack();">go back</button>
     </div> 
@@ -78,7 +80,6 @@
                     <div class="ButtonStyle">
                         <button (click)="addComment('100', 'JL', '', comment.value); comment.value ='';"><i class="fa fa-commenting"></i></button>
                     </div>
-                    <!-- hello world, test from angular post detail comments -->
                 </div>
             </div>
 
@@ -97,6 +98,12 @@
                         <button><i class="fa fa-thumbs-up"></i> like</button>
                         <button data-toggle="collapse" data-target="#Reply"><i class="fa fa-reply"></i> Reply</button>
                     </div>
+                    <div id="btn-style-edit">
+                            <button (click)="editComment();"><i class="far fa-edit"></i></button>
+                        </div>
+                        <div id="btn-style-delete">
+                            <button (click)="deleteComment({{comment.id}});"><i class="far fa-trash-alt"></i></button>
+                        </div>
                 </div>        
             </div> 
         </div>
