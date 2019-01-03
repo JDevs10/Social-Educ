@@ -23,9 +23,14 @@ export class CommentService {
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
    }
 
-   addLike(id: Number): Observable<Post>{
+   addPostLike(id: Number): Observable<Post>{
     let bodyLike = `like=1`;
-    return this.http.post<Post>(this.url+'/api/post/detail/'+id+'/addLike', bodyLike, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+    return this.http.post<Post>(this.url+'/api/post/detail/'+id+'/addLike', bodyLike, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  }
+
+  addCommentLike(id: Number): Observable<Comment[]>{
+    let bodyLike = `like=1`
+    return this.http.post<Comment[]>(this.url+'/api/post/comment/'+id+'/addLike', bodyLike, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 
    addComment(comment: Comment, id: Number): Observable<Comment[]>{
@@ -34,9 +39,13 @@ export class CommentService {
     return this.http.post<Comment[]>(this.url+"/api/post/detail/"+id+"/addComment", body, 
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
+
+  editComment(idPost: Number, idComment: Number): Observable<Comment>{
+    return this.http.get<Comment>(this.url+"/api/post/detail/"+idPost+"/editComment/"+idComment, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  }
   
-  deleteComment(idComment: Number): Observable<Comment>{
-    return this.http.get<Comment>(this.url+"/api/post/detail/"+idComment+"/comments/delet", {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+  deleteComment(idPost: Number, idComment: Number): Observable<Comment>{
+    return this.http.get<Comment>(this.url+"/api/post/detail/"+idPost+"/comments/delete/"+idComment, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
   }
 
 }

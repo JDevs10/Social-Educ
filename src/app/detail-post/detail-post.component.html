@@ -1,10 +1,42 @@
+<!-- popup -->
+<div id="pop-up">
+    <!-- student hidden experience form insert -->
+<div class="container">
+        <div class="form-popup-edit-comment" id="myEditCommentForm">
+        <h2 class="text-center">Modify the Comment</h2>
+        <button (click)="closeEditCommentForm();
+        titleExperience.value='';entrepriseExperience.value='';locationExperience.value='';deMonthFromExperience.value='';
+        deYearFromExperience.value='';aMonthToExperience.value='';aYearToExperience.value='';;descriptionExperience.value='';"
+        class="hiddenFormIcons"><i class="fa fa-times"></i></button><br>
+        
+        <div *ngFor="let idComment of idComment;">
+            <img src="{{idComment.userPicture}}" alt="">
+
+            <span>{{idComment.userName}} :</span>
+            <span> {{idComment.comment}}</span>
+        </div>
+        
+        
+        <br>
+        <button class="save-form-popup" (click)="addExperience(titleExperience.value, entrepriseExperience.value, 
+        locationExperience.value, webSiteExperience.value, deMonthFromExperience.value, deYearFromExperience.value, aMonthToExperience.value,
+        aYearToExperience.value, descriptionExperience.value);
+        titleExperience.value=''; entrepriseExperience.value=''; locationExperience.value=''; webSiteExperience.value='';
+        deMonthFromExperience.value=''; deYearFromExperience.value=''; aMonthToExperience.value='';
+        aYearToExperience.value=''; descriptionExperience.value='';">Enregistrer</button>
+        </div>
+      
+      </div>
+
+</div>
+
 <div class="grid-container">
     <div class="grid-box box1">
         <div class=" me-border">  <!--user profile info-->
           <div> <img src="https://source.unsplash.com/random/200x50" alt="userCoverPicture"> </div>
           <div class="userPic">  <img src="https://source.unsplash.com/random/75x75" alt="userPicture"> </div>
-          <div>Jean-Laurent Duzant</div>
-          <div>Étudiant(e) (ECE TECH)</div>
+          <div class="inline">Jean-Laurent Duzant</div>
+          <div class="inline">Étudiant(e) (ECE TECH)</div>
       </div>
     </div>
     <div class="grid-box box2">
@@ -12,8 +44,8 @@
         <div class="col-lg-12 col-md-4 p-3">
             <!-- post info -->
             <div class="row">
-                <div class="logo">
-                    <img src="{{post.picture}}" alt="">
+                <div class="post-profile-pic col-lg-4">
+                    <img src="{{post.picture}}" alt="profile picture">
                 </div>
                 <div class="postTitle">
                     <h1>{{post.title}}</h1>
@@ -30,7 +62,7 @@
                     <p>{{post.body}}</p>
                 </div>
                 <div class="postMedia col-lg-4">
-                    <img src="{{post.media}}" alt="">
+                    <img src="{{post.media}}" alt="media src">
                 </div>
             </div>
 
@@ -47,7 +79,7 @@
             </div>
             <div class="row text-center ButtonStyle">
                 <div class="like-button">
-                    <button (click)="addLike();"><i class="fa fa-thumbs-up"></i> Like</button>
+                    <button (click)="addPostLike();"><i class="fa fa-thumbs-up"></i> Like</button>
                 </div>
                 <div class="like-comment">
                     <button data-toggle="collapse" data-target="#Comment"><i class="fa fa-commenting"></i> Comment</button>
@@ -78,7 +110,7 @@
                         <textarea cols="62.9" rows="2" placeholder="Exprimez-vous..." #comment></textarea>
                     </div>
                     <div class="ButtonStyle">
-                        <button (click)="addComment('100', 'JL', '', comment.value); comment.value ='';"><i class="fa fa-commenting"></i></button>
+                        <button (click)="addComment('100', 'JL', 'https://source.unsplash.com/random/36x36', comment.value); comment.value ='';"><i class="fa fa-commenting"></i></button>
                     </div>
                 </div>
             </div>
@@ -87,24 +119,30 @@
             <div id="Comment" class="p-3" *ngFor="let comment of comments;">
                <div class="row text-center">
                     <div class="profile-pic">
-                        {{comment.userPicture}}
-                        <img src="https://source.unsplash.com/random/36x36" alt="">
+                        <img src="{{comment.userPicture}}" alt="">
                     </div>
                     <div class="comment">
                         <p>{{comment.userName}}</p>
                         <p>{{comment.comment}}</p>
                     </div>
+                </div>
+                <div style="font-size: 15px;">
+                    <hr style="margin: 0;">
+                    {{comment.numberOfLikes}} Likes  |  0 Comments
+                    <hr style="margin: 0;">
+                </div>
+                <div class="row text-center">
                     <div class="ButtonStyle">
-                        <button><i class="fa fa-thumbs-up"></i> like</button>
+                        <button (click)="addCommentLike(comment.id);"><i class="fa fa-thumbs-up"></i> like</button>
                         <button data-toggle="collapse" data-target="#Reply"><i class="fa fa-reply"></i> Reply</button>
                     </div>
                     <div id="btn-style-edit">
-                            <button (click)="editComment();"><i class="far fa-edit"></i></button>
-                        </div>
-                        <div id="btn-style-delete">
-                            <button (click)="deleteComment({{comment.id}});"><i class="far fa-trash-alt"></i></button>
-                        </div>
-                </div>        
+                        <button (click)="openEditComment(comment.id);"><i class="fa fa-pencil-square-o"></i></button>
+                    </div>
+                    <div id="btn-style-delete">
+                        <button (click)="deleteComment(comment.id)"><i class="fa fa-trash-o"></i></button>
+                    </div>
+                </div>   
             </div> 
         </div>
     </div>

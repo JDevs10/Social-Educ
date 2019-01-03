@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { PostService } from '../../post.service';
 import { Post } from '../mock/post';
 import { CommentService } from '../../comment.service';
 import { Comment } from '../mock/comments';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -17,16 +17,24 @@ export class DetailPostComponent implements OnInit {
 
   post: Post;
   comments: Comment[];
-  //nbComments: Number;
+  idComment: Comment[];
+  checkViewEdit = false;
+  id_Comment: Number;
 
   constructor(private route: ActivatedRoute,
     private postService: PostService,
     private commentService: CommentService,
+    public router: Router,
     private location: Location) {}
 
   ngOnInit() {
     this.getPost();
-    this.getPostComments();
+    if (this.checkViewEdit) {
+      this.viewEditComment();
+    } else {
+      this.getPostComments();
+    }
+    
     this.getPostTotalNumberComments();
   }
 
@@ -49,13 +57,12 @@ export class DetailPostComponent implements OnInit {
   postDelete(): void{
     const id = +this.route.snapshot.paramMap.get('id');
     this.postService.postDelete(id).subscribe(post => this.post = post);
-    this.location.back();
-    // this.route.navigate(['/foo-content', 'bar-contents', 'baz-content', 'page'], this.params.queryParams);
+    this.router.navigate(['wall']);
   }
 
-  addLike(): void{
+  addPostLike(): void{
     const id = +this.route.snapshot.paramMap.get('id');
-    this.commentService.addLike(id).subscribe(post => this.post = post);
+    this.commentService.addPostLike(id).subscribe(post => this.post = post);
   }
 
   addComment(idPost: any, userName: String, userPicture: String, comment: String): void{
@@ -70,8 +77,39 @@ export class DetailPostComponent implements OnInit {
     .subscribe(comments => {this.comments = comments;});
   }
 
+  addCommentLike(idComment: Number): void{
+    this.commentService.addCommentLike(idComment).subscribe(comments => this.comments = comments);
+  }
+
+  openEditComment(idComment: Number): void {
+    var div_pop_up = document.getElementById("pop-up");
+    var expForm = document.getElementById("myEditCommentForm");
+  
+    div_pop_up.style.display = "block";
+    expForm.style.display = "block";
+
+    this.checkViewEdit = true;
+    this.id_Comment = idComment;
+    this.viewEditComment();
+  }
+
+  closeEditCommentForm(): void{
+    var div_pop_up = document.getElementById("pop-up");
+    var expForm = document.getElementById("myEditCommentForm");
+  
+    div_pop_up.style.display = "none";
+    expForm.style.display = "none";
+  }
+
+  viewEditComment(): void{
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.commentService.editComment(id, this.id_Comment).subscribe(idComment => {idComment = idComment;});
+  }
+
   deleteComment(idComment: Number): void{
-    this.commentService.deleteComment(idComment).subscribe(comments => {comments = comments;});
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.commentService.deleteComment(id, idComment).subscribe(comments => {comments = comments;});
+    this.getPostComments();
   }
 
   goBack(): void {

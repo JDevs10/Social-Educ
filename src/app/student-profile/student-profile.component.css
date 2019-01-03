@@ -1,3 +1,7 @@
+body{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+
 /* Div pop-up */
 #pop-up{
     display: none;
@@ -14,33 +18,38 @@
 
 /* Student General */
 #studentGeneral{
-    background-color: bisque;   
-}
-
-.grid-container {
-    display: grid;
-    grid-gap: 10px;
-    background-color: beige;
-    padding: 10px;
+    background-color: #95D7FF;   
 }
 
 .grid-box {
     text-align: left;
     padding: 10px;
     font-size: 20px;
+    width: auto;
 }
 
 .box1{
     background-image: url("https://source.unsplash.com/random/1100x200");   /*1100x200 px*/
     background-position: center;
     background-size: cover;
-    width: 1100px;
+    width: auto;
     height: 200px;
 }
 
+.box2{
+    height: auto;
+    width: auto;
+}
+
 .box2 p{
+    display: inline;
     position: relative;
     left: 225px;
+}
+
+.box3{
+    height: auto;
+    width: auto;
 }
 
 .studentImag{
@@ -53,7 +62,7 @@
 
 /* Student posts */
 #studentPosts{
-    background-color: bisque;
+    background-color: #95D7FF;
     text-align: left;
 }
 
@@ -70,7 +79,7 @@
 
 /* Student Experience */
 #studentExperience{
-    background-color: bisque;
+    background-color: #95D7FF;
     text-align: left;
 }
 
@@ -110,7 +119,7 @@
 
 /* Student Education */
 #studentEducation{
-    background-color: bisque;
+    background-color: #95D7FF;
     text-align: left;
 }
 
@@ -150,7 +159,7 @@
 
 /* Student Skills */
 #studentskills{
-    background-color: bisque;
+    background-color: #95D7FF;
     text-align: left;
 }
 
@@ -311,10 +320,6 @@
     background-color: silver;
     width: 50%;
     text-align: left;
-}
-
-.skillModifyIcons{
-
 }
 
 /* All hidden pop-up forms */

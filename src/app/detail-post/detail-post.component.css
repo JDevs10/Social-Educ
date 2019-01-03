@@ -1,3 +1,66 @@
+/* Div pop-up */
+#pop-up{
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(90, 90, 90, 0.5);
+  z-index: 9999;
+}
+
+/* Hidden form-popup-experience */
+#myEditCommentForm{
+  display: none;
+  width: 36%;
+  height: 250px;
+  z-index: 20;
+  padding: 5px;
+  position: absolute;
+  left: 35%;
+  top: 50px;
+} 
+
+.form-popup-edit-comment{
+  background-color: silver;
+  overflow-y: auto;
+  width: 50%;
+  height: 50%;
+  text-align: left;
+}
+
+.hiddenFormIcons{
+  background-color: transparent;
+  color: white;
+  background: none;
+  border: none;
+  border-bottom: none;
+  position: relative;
+  left: 390px;
+  bottom: 50px;
+  font-size: 30px;
+}
+
+.hiddenFormIcons:hover{
+  color: beige;
+}
+
+.save-form-popup{
+  background-color: transparent;
+  border: none;
+  position: relative;
+  left: 325px;
+}
+
+.save-form-popup:hover{
+  background-color: beige;
+}
+
+
+
 .userPic img{
     background-size: cover; 
     bottom: 35px;
@@ -5,11 +68,21 @@
     border-radius: 100%;
   }
 
+.post-profile-pic img{
+  width: 50%;
+  height: 50%;
+}
+
 .postTitle{
     text-align: center;
     position: relative;
     left: 100px;
     top: 50px;
+}
+
+.postMedia img{
+  width: 100%;
+  height: 100%;
 }
 
 div#button-option button{
@@ -45,7 +118,7 @@ div#button-option button:hover{
     text-align: center;
     padding: 10px;
     font-size: 20px;
-    float: left;
+    display: inline;
     border-radius: 10px;
   }
 
@@ -59,6 +132,10 @@ div#button-option button:hover{
     grid-column: 3;
     grid-row: 1/ span 6;
     width: 230px;
+  }
+
+  .inline{
+    display: inline;
   }
 
   div#Comment{
@@ -81,6 +158,28 @@ div#button-option button:hover{
     text-align: left;
     padding-left: 10px;
   }
+
+  div#Comment div#btn-style-edit button{
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+  }
+
+  /* div#Comment div#btn-style-edit button:hover{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    color: white;
+  } */
+
+  div#Comment div#btn-style-delete button{
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+  }
+
+  /* div#Comment div#btn-style-delete button:hover{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    color: white;
+  } */
 
   .show-nb-Like-Comments hr{
     margin: 5px;

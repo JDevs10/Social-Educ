@@ -7,6 +7,7 @@ import { StudentProfileComponent } from './student-profile/student-profile.compo
 import { DetailPostComponent } from './detail-post/detail-post.component';
 import { ModificationFormComponent } from './modification-form/modification-form.component';
 import { DetailPostEditComponent } from './detail-post-edit/detail-post-edit.component';
+import { LoginSignInComponent } from './LoginSignIn/login-sign-in/login-sign-in.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'student-Profile/:id', component: StudentProfileComponent},
   { path: 'detail/:id', component: DetailPostComponent},
   { path: 'detail/:id/edit', component: DetailPostEditComponent},
-  { path: 'student-Profile/:id/form-modification/:id-fm', component: ModificationFormComponent}
+  { path: 'student-Profile/:id/form-modification/:id-fm', component: ModificationFormComponent},
+  { path: 'loginSignIn', component: LoginSignInComponent}
 ];
 
 @NgModule({

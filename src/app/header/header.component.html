@@ -1,26 +1,13 @@
 <nav class="navbar navbar-setup">
-    <a class="navbar-brand" routerLink="/wall">Social Educ</a>
-    <div class="navbar-expand mr-auto">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" routerLink="/wall">Home</a>
-        <a class="nav-item nav-link" href="#">Profile</a>
-        <a class="nav-item nav-link" href="#">Schools</a>
-        <a class="nav-item nav-link" href="#">Deegres</a>
-        <a class="nav-item nav-link" href="#">Messages</a>
-        <a class="nav-item nav-link" href="#">Notifications</a>
-      </div>
-    </div>
-    <div class="navbar-expand ml-auto navbar-nav">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link" href="https://github.com/beeman" target="_blank">
-          <i class="fa fa-github"></i>
-        </a>
-        <a class="nav-item nav-link" href="https://twitter.com/beeman_nl" target="_blank">
-          <i class="fa fa-twitter"></i>
-        </a>
-        <a class="nav-item nav-link" href="https://medium.com/@beeman" target="_blank">
-          <i class="fa fa-medium"></i>
-        </a>
-      </div>
+    <a class="navbar-brand" routerLink="/loginSignIn">Social Educ</a>
+
+    <div class="topnav" id="myTopnav">
+      <a class="nav-item nav-link active" routerLink="/wall">Home</a>
+      <a class="nav-item nav-link" routerLink="/student-Profile/1">Profile</a>
+      <a class="nav-item nav-link" href="#">Schools</a>
+      <a class="nav-item nav-link" href="#">Deegres</a>
+      <a class="nav-item nav-link" href="#">Messages</a>
+      <a class="nav-item nav-link" href="#">Notifications</a>
+      <a href="javascript:void(0);" style="font-size:20px;" class="icon" (click)="myFunction()"><i class="fa fa-bars"></i></a>
     </div>
   </nav>

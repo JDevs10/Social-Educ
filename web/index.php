@@ -108,46 +108,6 @@ $app->get('api/blog/{id}/delete',  function ($id) use($app){
     return json_encode($post);
 });
 
-// ===================================== COMMENT ==============================================
-//to get all comments of a post
-$app->get('/api/post/detail/{id}/comments', function($id) use ($app) {
-    //$sql = $app['db']->fetchAll('SELECT * from comments WHERE idPost = '.$id.' ORDER BY id DESC ');
-    $sql = "SELECT * FROM comments WHERE idPost = ? ORDER BY id DESC ";
-    $comments = $app['db']->fetchAll($sql, array((int) $id));
-    return json_encode($comments);
-});
-
-//to insert a comment to a post 
-$app->post('/api/post/detail/{id}/addComment', function (Request $request, $id) use($app){
-    $idPost = $request->get('idPost');
-    $userName = $request->get('userName');
-    $userPicture = $request->get('userPicture');
-    $comment = $request->get('comment');
-
-    $app['db']->insert('comments', $list = array(
-        'idPost'        => $idPost,
-        'userName'      => $userName,
-        'userPicture'   => $userPicture,
-        'comment'       => $comment
-    ));
-
-    $sql = "SELECT * FROM comments WHERE idPost = ? ORDER BY id DESC";
-    $comment_post = $app['db']->fetchAll($sql, array((int) $id));
-
-    return json_encode($comment_post);
-});
-
-//to delete a cooment of a post
-$app->get('/api/post/detail/{id}/comments/delete',  function ($id) use($app){
-    $sql = "DELETE FROM comments WHERE id = ?";
-    $post = $app['db']->executeQuery($sql, array((int) $id));
-
-    $sql = "SELECT * FROM comments";
-    $comments = $app['db']->fetchAll($sql);
-    return json_encode($comments);
-});
-
-
 //to insert the number of likes
 $app->post('/api/post/detail/{id}/addLike', function (Request $request, $id) use ($app){
     $sql = "SELECT numberOfLikes FROM posts WHERE id = ?";
@@ -182,7 +142,7 @@ $app->get('/api/post/detail/{id}/numberComments', function ($id) use ($app){
     $nbComments = $app['db']->fetchAssoc($sql, array((int) $id));
 
     $sql1 = "UPDATE posts SET numberOfComments = ? WHERE id = ?";
-    $app['db']->executeUpdate($sql1, array(
+    /*$post =*/ $app['db']->executeUpdate($sql1, array(
         $nbComments['nbComments'],
         (int) $id
     ));
@@ -193,7 +153,76 @@ $app->get('/api/post/detail/{id}/numberComments', function ($id) use ($app){
 });
 
 
-// Student profile api's
+// ===================================== COMMENT ==============================================
+//to get all comments of a post
+$app->get('/api/post/detail/{id}/comments', function($id) use ($app) {
+    //$sql = $app['db']->fetchAll('SELECT * from comments WHERE idPost = '.$id.' ORDER BY id DESC ');
+    $sql = "SELECT * FROM comments WHERE idPost = ? ORDER BY id DESC ";
+    $comments = $app['db']->fetchAll($sql, array((int) $id));
+    return json_encode($comments);
+});
+
+//to insert a comment to a post 
+$app->post('/api/post/detail/{id}/addComment', function (Request $request, $id) use($app){
+    $idPost = $request->get('idPost');
+    $userName = $request->get('userName');
+    $userPicture = $request->get('userPicture');
+    $comment = $request->get('comment');
+
+    $app['db']->insert('comments', $list = array(
+        'idPost'        => $idPost,
+        'userName'      => $userName,
+        'userPicture'   => $userPicture,
+        'comment'       => $comment
+    ));
+
+    $sql = "SELECT * FROM comments WHERE idPost = ? ORDER BY id DESC";
+    $comment_post = $app['db']->fetchAll($sql, array((int) $id));
+
+    return json_encode($comment_post);
+});
+
+//to delete a comment of a post
+$app->get('/api/post/detail/{id}/comments/delete/{idComment}',  function ($id, $idComment) use($app){
+    $sql = "DELETE FROM comments WHERE id = ?";
+    $comments = $app['db']->executeQuery($sql, array((int) $idComment));
+
+    $sql = "SELECT * FROM comments WHERE idPost = ?";
+    $comments = $app['db']->fetchAll($sql, array((int) $id));
+    return json_encode($comments);
+});
+
+//to get a comment of a post before modifying it
+$app->get('/api/post/detail/{idPost}/editComment/{idComment}', function($idComment) use ($app){
+	$sql = "SELECT * FROM comments WHERE id = ?";
+	$getTheCommentToEdit = $app['db']->fetchAll($sql, array((int) $idComment));
+
+	return json_encode($getTheCommentToEdit);
+});
+
+//to insert the number of likes
+$app->post('/api/post/comment/{id}/addLike', function (Request $request, $id) use ($app){
+    $sql = "SELECT numberOfLikes FROM comments WHERE id = ?";
+    $getAllLikes = $app['db']->fetchAssoc($sql, array((int) $id));
+
+    $addLike = $getAllLikes['numberOfLikes']+1;
+
+    $sql = "UPDATE comments SET numberOfLikes = ? WHERE id = ?";
+    $app['db']->executeUpdate($sql, array(
+        $addLike,
+        (int) $id
+    ));
+
+    $sql1 = "SELECT * FROM comments WHERE id = ?";
+    $comment = $app['db']->fetchAssoc($sql1, array((int) $id));
+    return json_encode($comment);
+});
+
+
+
+
+//=============================================== Student profile api's=============================================================
+//==================================================================================================================================
 //get all the experience posts from student
 $app->get('/api/student/{id}/experience', function ($id) use ($app){
     $sql = 'SELECT * FROM experience where IdStudent = ?';
