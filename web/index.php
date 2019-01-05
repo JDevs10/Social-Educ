@@ -193,11 +193,30 @@ $app->get('/api/post/detail/{id}/comments/delete/{idComment}',  function ($id, $
 });
 
 //to get a comment of a post before modifying it
-$app->get('/api/post/detail/{idPost}/editComment/{idComment}', function($idComment) use ($app){
-	$sql = "SELECT * FROM comments WHERE id = ?";
-	$getTheCommentToEdit = $app['db']->fetchAll($sql, array((int) $idComment));
+$app->get('/api/post/detail/{idPost}/editComment/{idComment}/get', function($idPost, $idComment) use ($app){
+	$sql = "SELECT * FROM comments WHERE id = ? AND idPost = ?";
+	$getTheCommentToEdit = $app['db']->fetchAll($sql, array((int) $idComment, $idPost));
 
 	return json_encode($getTheCommentToEdit);
+});
+
+//modifying the comment
+$app->post('/api/post/detail/{idPost}/editComment/{idComment}/edit', function(Request $request, $idPost, $idComment) use ($app){
+	$sql = "SELECT * FROM comments WHERE id = ? AND idPost = ?";
+	$comment = $app['db']->fetchAll($sql, array((int) $idComment, $idPost));
+
+    if ($request->get('comment') != null){	$post['comment'] = $request->get('comment');}
+
+    $sql = "UPDATE comments SET comment=? WHERE id = ? AND idPost = ?";
+    $comment = $app['db']->executeUpdate($sql, array(
+        $post['comment'],
+        (int) $idComment,
+        (int) $idPost
+    ));
+
+    $sql = "SELECT * FROM comments WHERE idPost = ?";
+	$commentEdited = $app['db']->fetchAll($sql, array((int) $idPost));
+    return json_encode($commentEdited);
 });
 
 //to insert the number of likes

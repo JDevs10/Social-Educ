@@ -17,7 +17,6 @@ export class DetailPostComponent implements OnInit {
 
   post: Post;
   comments: Comment[];
-  idComment: Comment[];
   checkViewEdit = false;
   id_Comment: Number;
 
@@ -29,9 +28,7 @@ export class DetailPostComponent implements OnInit {
 
   ngOnInit() {
     this.getPost();
-    if (this.checkViewEdit) {
-      this.viewEditComment();
-    } else {
+    if (!this.checkViewEdit) {
       this.getPostComments();
     }
     
@@ -93,17 +90,31 @@ export class DetailPostComponent implements OnInit {
     this.viewEditComment();
   }
 
+  viewEditComment(): void{
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.commentService.editComment(id, this.id_Comment).subscribe(comments => this.comments = comments);
+  }
+
+  modifyComment(comment: String): void{
+    const id = +this.route.snapshot.paramMap.get('id');
+    comment = (<HTMLInputElement>document.getElementById("textareaHiddenModifyCommentBody")).value;
+    // comment = (document.getElementById("textareaHiddenModifyCommentBody")).value;
+
+    if(!comment){return;}
+    this.commentService.modifyEditComment({ comment } as Comment, this.id_Comment, id)
+    .subscribe(comments => {this.comments = comments;});
+
+    this.closeEditCommentForm();
+  }
+
   closeEditCommentForm(): void{
     var div_pop_up = document.getElementById("pop-up");
     var expForm = document.getElementById("myEditCommentForm");
   
     div_pop_up.style.display = "none";
     expForm.style.display = "none";
-  }
 
-  viewEditComment(): void{
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.commentService.editComment(id, this.id_Comment).subscribe(idComment => {idComment = idComment;});
+    this.getPostComments();
   }
 
   deleteComment(idComment: Number): void{

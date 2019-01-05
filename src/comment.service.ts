@@ -40,8 +40,15 @@ export class CommentService {
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 
-  editComment(idPost: Number, idComment: Number): Observable<Comment>{
-    return this.http.get<Comment>(this.url+"/api/post/detail/"+idPost+"/editComment/"+idComment, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  editComment(idPost: Number, idComment: Number): Observable<Comment[]>{
+    return this.http.get<Comment[]>(this.url+"/api/post/detail/"+idPost+"/editComment/"+idComment+"/get", {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  }
+
+  modifyEditComment(comment: Comment, idComment: Number, idPost: Number): Observable<Comment[]>{
+    let body = `comment=${comment.comment}`;
+
+    return this.http.post<Comment[]>(this.url+"/api/post/detail/"+idPost+"/editComment/"+idComment+"/edit", body, 
+    {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
   
   deleteComment(idPost: Number, idComment: Number): Observable<Comment>{

@@ -1,29 +1,22 @@
 <!-- popup -->
 <div id="pop-up">
-    <!-- student hidden experience form insert -->
-<div class="container">
+    <!-- hidden modification form -->
+    <div class="container">
         <div class="form-popup-edit-comment" id="myEditCommentForm">
         <h2 class="text-center">Modify the Comment</h2>
-        <button (click)="closeEditCommentForm();
-        titleExperience.value='';entrepriseExperience.value='';locationExperience.value='';deMonthFromExperience.value='';
-        deYearFromExperience.value='';aMonthToExperience.value='';aYearToExperience.value='';;descriptionExperience.value='';"
+        <button (click)="closeEditCommentForm();"
         class="hiddenFormIcons"><i class="fa fa-times"></i></button><br>
         
-        <div *ngFor="let idComment of idComment;">
-            <img src="{{idComment.userPicture}}" alt="">
+        <div *ngFor="let idComment of comments;">
+            <img src="{{idComment.userPicture}}" alt="user image">
 
-            <span>{{idComment.userName}} :</span>
-            <span> {{idComment.comment}}</span>
+            <span style="font-size: 23px;"> {{idComment.userName}} :</span> <br><br>
+            <textarea id="textareaHiddenModifyCommentBody" >{{idComment.comment}}</textarea>
         </div>
         
         
         <br>
-        <button class="save-form-popup" (click)="addExperience(titleExperience.value, entrepriseExperience.value, 
-        locationExperience.value, webSiteExperience.value, deMonthFromExperience.value, deYearFromExperience.value, aMonthToExperience.value,
-        aYearToExperience.value, descriptionExperience.value);
-        titleExperience.value=''; entrepriseExperience.value=''; locationExperience.value=''; webSiteExperience.value='';
-        deMonthFromExperience.value=''; deYearFromExperience.value=''; aMonthToExperience.value='';
-        aYearToExperience.value=''; descriptionExperience.value='';">Enregistrer</button>
+        <button class="save-form-popup" (click)="modifyComment('')">Modify</button>
         </div>
       
       </div>
