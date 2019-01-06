@@ -19,7 +19,7 @@
         <button class="save-form-popup" (click)="modifyComment('')">Modify</button>
         </div>
       
-      </div>
+    </div>
 
 </div>
 
@@ -34,27 +34,28 @@
     </div>
     <div class="grid-box box2">
         <!-- show post -->
-        <div class="col-lg-12 col-md-4 p-3">
+        <div class="col-lg-12 col-md-12 p-3">
             <!-- post info -->
-            <div class="row">
+            <div id="post-info" class="row">
                 <div class="post-profile-pic col-lg-4">
                     <img src="{{post.picture}}" alt="profile picture">
                 </div>
                 <div class="postTitle">
-                    <h1>{{post.title}}</h1>
+                    <h1>{{post.title}}</h1><br>
                 </div>
                 <div id="button-option">
                     <button><a routerLink="/detail/{{post.id}}/edit"><i class="fa fa-pencil-square-o"></i></a></button>
                     <button (click)="postDelete();"><i class="fa fa-trash-o"></i></button>
                 </div>
             </div>
+            <br>
 
             <!-- post contant -->
             <div class="row text-left">
-                <div class="postBody col-lg-7">
+                <div class="postBody col-lg-6">
                     <p>{{post.body}}</p>
                 </div>
-                <div class="postMedia col-lg-4">
+                <div class="postMedia col-lg-6">
                     <img src="{{post.media}}" alt="media src">
                 </div>
             </div>
@@ -86,6 +87,7 @@
 
     <div class="grid-box box3">
         3 <a routerLink="/student-Profile/1">my profile</a>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam placeat labore dolorum iusto incidunt facere illo aspernatur autem. Esse, dolor ab? Nostrum libero aliquid placeat similique voluptatibus veritatis officiis ex.</p>
         <br>
         <button (click)="goBack();">go back</button>
     </div> 

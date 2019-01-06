@@ -16,7 +16,7 @@ import { Comment } from '../mock/comments';
 export class DetailPostComponent implements OnInit {
 
   post: Post;
-  comments: Comment[];
+  comments: Comment;
   checkViewEdit = false;
   id_Comment: Number;
 

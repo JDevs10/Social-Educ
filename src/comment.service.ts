@@ -13,8 +13,8 @@ export class CommentService {
 
   constructor(private http: HttpClient) { }
 
-   getPostComments(id: Number): Observable<Comment[]>{
-    return this.http.get<Comment[]>(this.url+"/api/post/detail/"+id+"/comments", 
+   getPostComments(id: Number): Observable<Comment>{
+    return this.http.get<Comment>(this.url+"/api/post/detail/"+id+"/comments", 
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
    }
 
@@ -28,26 +28,26 @@ export class CommentService {
     return this.http.post<Post>(this.url+'/api/post/detail/'+id+'/addLike', bodyLike, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 
-  addCommentLike(id: Number): Observable<Comment[]>{
+  addCommentLike(id: Number): Observable<Comment>{
     let bodyLike = `like=1`
-    return this.http.post<Comment[]>(this.url+'/api/post/comment/'+id+'/addLike', bodyLike, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+    return this.http.post<Comment>(this.url+'/api/post/comment/'+id+'/addLike', bodyLike, {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 
-   addComment(comment: Comment, id: Number): Observable<Comment[]>{
+   addComment(comment: Comment, id: Number): Observable<Comment>{
     let body = `idPost=${comment.idPost}&userName=${comment.userName}&userPicture=${comment.userPicture}&comment=${comment.comment}`;
 
-    return this.http.post<Comment[]>(this.url+"/api/post/detail/"+id+"/addComment", body, 
+    return this.http.post<Comment>(this.url+"/api/post/detail/"+id+"/addComment", body, 
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 
-  editComment(idPost: Number, idComment: Number): Observable<Comment[]>{
-    return this.http.get<Comment[]>(this.url+"/api/post/detail/"+idPost+"/editComment/"+idComment+"/get", {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  editComment(idPost: Number, idComment: Number): Observable<Comment>{
+    return this.http.get<Comment>(this.url+"/api/post/detail/"+idPost+"/editComment/"+idComment+"/get", {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
 
-  modifyEditComment(comment: Comment, idComment: Number, idPost: Number): Observable<Comment[]>{
+  modifyEditComment(comment: Comment, idComment: Number, idPost: Number): Observable<Comment>{
     let body = `comment=${comment.comment}`;
 
-    return this.http.post<Comment[]>(this.url+"/api/post/detail/"+idPost+"/editComment/"+idComment+"/edit", body, 
+    return this.http.post<Comment>(this.url+"/api/post/detail/"+idPost+"/editComment/"+idComment+"/edit", body, 
     {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
   
