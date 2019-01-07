@@ -20,4 +20,8 @@ export class EducationService {
     let body = `IdStudent=${education.IdStudent}&SchoolName=${education.schoolName}&Diploma=${education.diploma}&FieldOfStudy=${education.fieldOfStudy}&DiplomaLevel=${education.diplomaLevel}&Period=${education.period}&Description=${education.description}`;
     return this.http.post<Education[]>(this.url+"/api/student/"+id+"/education/addEducation", body,{headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
   }
+
+  deleteEducationPost(educationPostID: Number, IdStudent: Number): Observable<Education[]>{
+    return this.http.get<Education[]>(this.url+"/api/student/"+IdStudent+"/education/"+educationPostID+"/delete", {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+  }
 }

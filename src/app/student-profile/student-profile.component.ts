@@ -56,28 +56,28 @@ openExperienceForm(): void {
 
 addExperience(title: String, companyName: String, companyAddress: String, companyWebSite: String, deMonthFromExperience: String,
   deYearFromExperience: String, aMonthToExperience: String, aYearToExperience: String, description: String): void{
-    const IdStudent = +this.route.snapshot.paramMap.get('id');
+  const IdStudent = +this.route.snapshot.paramMap.get('id');
 
-    title = title.trim();
-    companyName = companyName.trim();
-    companyAddress = companyAddress.trim();
-    companyWebSite = companyWebSite.trim();
-    deMonthFromExperience = deMonthFromExperience.trim();
-    deYearFromExperience = deYearFromExperience.trim();
-    aMonthToExperience = aMonthToExperience.trim();
-    aYearToExperience = aYearToExperience.trim();
-    description = description.trim();
+  title = title.trim();
+  companyName = companyName.trim();
+  companyAddress = companyAddress.trim();
+  companyWebSite = companyWebSite.trim();
+  deMonthFromExperience = deMonthFromExperience.trim();
+  deYearFromExperience = deYearFromExperience.trim();
+  aMonthToExperience = aMonthToExperience.trim();
+  aYearToExperience = aYearToExperience.trim();
+  description = description.trim();
 
-    let period;
-    if(this.checkbox.checked == true){
-      period = "Je travaille actuellement dans ce rôle depuis "+deMonthFromExperience+" "+deYearFromExperience;
-    }else{
-      period = "Depuis "+deMonthFromExperience+" "+deYearFromExperience+" jusqu'a "+aMonthToExperience+" "+aYearToExperience;
-    }
+  let period;
+  if(this.checkbox.checked == true){
+    period = "Je travaille actuellement dans ce rôle depuis "+deMonthFromExperience+" "+deYearFromExperience;
+  }else{
+    period = "Depuis "+deMonthFromExperience+" "+deYearFromExperience+" jusqu'a "+aMonthToExperience+" "+aYearToExperience;
+  }
 
-    if(!title || !companyName || !period ){return;}
-    this.experienceService.addExperience({IdStudent, title, companyName, companyAddress, companyWebSite, period, description} as Experience, 1)
-    .subscribe(experience => {this.experience = experience;});
+  if(!title || !companyName || !period ){return;}
+  this.experienceService.addExperience({IdStudent, title, companyName, companyAddress, companyWebSite, period, description} as Experience)
+  .subscribe(experience => {this.experience = experience;});
 }
 
 closeExperienceForm(): void {
@@ -95,6 +95,13 @@ modifyExperiencePost(experiencePostID: Number): void{
   //allFrom_div.innerHTML("<p>Hello World people !!!</p>");
 }
 
+deleteExperiencePost(experiencePostID: Number): void{
+  const IdStudent = +this.route.snapshot.paramMap.get('id');
+
+  this.experienceService.deleteExperiencePost(experiencePostID, IdStudent).subscribe(experience => this.experience = experience);
+}
+
+// Education
 getEducationPost(): void{
   const id = +this.route.snapshot.paramMap.get('id');
   this.educationService.getEducation(id).subscribe(education => this.education = education);
@@ -147,6 +154,12 @@ closeEducationForm(): void {
 
 modifyEducationPost(educationPostID: Number): void{
   alert("A form pop-up need to show the correct information of the education post by this id : "+educationPostID);
+}
+
+deleteEducationPost(educationPostID: Number){
+  const IdStudent = +this.route.snapshot.paramMap.get('id');
+
+  this.educationService.deleteEducationPost(educationPostID, IdStudent).subscribe(education => this.education = education);
 }
 
 // Skills

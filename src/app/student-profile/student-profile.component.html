@@ -292,6 +292,7 @@
         </div>
         <div class="experienceModifyIcons">
           <button (click)="modifyExperiencePost(experience.id, 0);"><i class="fa fa-pencil"></i></button>
+          <button (click)="deleteExperiencePost(experience.id)"><i class="fa fa-trash-o"></i></button>
         </div>
       </div>
       <hr>
@@ -320,6 +321,7 @@
           </div>
           <div class="educationModifyIcons">
             <button (click)="modifyEducationPost(education.id, 1);"><i class="fa fa-pencil"></i></button>
+            <button (click)="deleteEducationPost(education.id)"><i class="fa fa-trash-o"></i></button>
           </div>
         </div>
     </div>

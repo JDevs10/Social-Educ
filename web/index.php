@@ -232,8 +232,8 @@ $app->post('/api/post/comment/{id}/addLike', function (Request $request, $id) us
         (int) $id
     ));
 
-    $sql1 = "SELECT * FROM comments WHERE id = ?";
-    $comment = $app['db']->fetchAssoc($sql1, array((int) $id));
+    $sql = "SELECT * FROM comments WHERE id = ?";
+    $comment = $app['db']->fetchAssoc($sql, array((int) $id));
     return json_encode($comment);
 });
 
@@ -276,6 +276,17 @@ $app->post('/api/student/{id}/experience/addExperience', function (Request $requ
     return json_encode($experience_post);
 });
 
+//remove a skill post from s student
+$app->get('/api/student/{IdStudent}/experience/{experiencePostID}/delete',  function ($IdStudent,$experiencePostID) use($app){
+    $sql = "DELETE FROM experience WHERE id = ?";
+    $post = $app['db']->executeQuery($sql, array((int) $experiencePostID));
+
+    $sql = "SELECT * FROM experience WHERE IdStudent = ?";
+    $get_the_remaining_skills = $app['db']->fetchAll($sql, array((int) $IdStudent));
+    return json_encode($get_the_remaining_skills);
+});
+
+
 //get all the education posts from student
 $app->get('/api/student/{id}/education', function ($id) use ($app){
     $sql = 'SELECT * FROM education where IdStudent = ?';
@@ -309,6 +320,17 @@ $app->post('/api/student/{id}/education/addEducation', function (Request $reques
 
     return json_encode($education_post);
 });
+
+// remove the education post 
+$app->get('/api/student/{IdStudent}/education/{educationPostID}/delete',  function ($IdStudent,$educationPostID) use($app){
+    $sql = "DELETE FROM education WHERE id = ?";
+    $post = $app['db']->executeQuery($sql, array((int) $educationPostID));
+
+    $sql = "SELECT * FROM education WHERE IdStudent = ?";
+    $get_rest_post = $app['db']->fetchAll($sql, array((int) $IdStudent));
+    return json_encode($get_rest_post);
+});
+
 
 //get all the skill posts from student
 $app->get('/api/student/{id}/skill', function ($id) use ($app){
