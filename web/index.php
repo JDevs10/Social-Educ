@@ -138,7 +138,7 @@ $app->get('/api/post/detail/{id}/numberLikes', function ($id) use ($app){
 
 //to get the total number of comments of in post
 $app->get('/api/post/detail/{id}/numberComments', function ($id) use ($app){
-    $sql = "SELECT COUNT(id) as nbComments FROM comments WHERE idPost = ?";
+    $sql = "SELECT COUNT(id) as nbComments FROM comments WHERE id_post_id = ?";
     $nbComments = $app['db']->fetchAssoc($sql, array((int) $id));
 
     $sql1 = "UPDATE posts SET numberOfComments = ? WHERE id = ?";
@@ -156,27 +156,27 @@ $app->get('/api/post/detail/{id}/numberComments', function ($id) use ($app){
 // ===================================== COMMENT ==============================================
 //to get all comments of a post
 $app->get('/api/post/detail/{id}/comments', function($id) use ($app) {
-    //$sql = $app['db']->fetchAll('SELECT * from comments WHERE idPost = '.$id.' ORDER BY id DESC ');
-    $sql = "SELECT * FROM comments WHERE idPost = ? ORDER BY id DESC ";
+    //$sql = $app['db']->fetchAll('SELECT * from comments WHERE id_post_id = '.$id.' ORDER BY id DESC ');
+    $sql = "SELECT * FROM comments WHERE id_post_id = ? ORDER BY id DESC ";
     $comments = $app['db']->fetchAll($sql, array((int) $id));
     return json_encode($comments);
 });
 
 //to insert a comment to a post 
 $app->post('/api/post/detail/{id}/addComment', function (Request $request, $id) use($app){
-    $idPost = $request->get('idPost');
+    $id_post_id = $request->get('id_post_id');
     $userName = $request->get('userName');
     $userPicture = $request->get('userPicture');
     $comment = $request->get('comment');
 
     $app['db']->insert('comments', $list = array(
-        'idPost'        => $idPost,
+        'id_post_id'        => $id_post_id,
         'userName'      => $userName,
         'userPicture'   => $userPicture,
         'comment'       => $comment
     ));
 
-    $sql = "SELECT * FROM comments WHERE idPost = ? ORDER BY id DESC";
+    $sql = "SELECT * FROM comments WHERE id_post_id = ? ORDER BY id DESC";
     $comment_post = $app['db']->fetchAll($sql, array((int) $id));
 
     return json_encode($comment_post);
@@ -187,35 +187,35 @@ $app->get('/api/post/detail/{id}/comments/delete/{idComment}',  function ($id, $
     $sql = "DELETE FROM comments WHERE id = ?";
     $comments = $app['db']->executeQuery($sql, array((int) $idComment));
 
-    $sql = "SELECT * FROM comments WHERE idPost = ?";
+    $sql = "SELECT * FROM comments WHERE id_post_id = ?";
     $comments = $app['db']->fetchAll($sql, array((int) $id));
     return json_encode($comments);
 });
 
 //to get a comment of a post before modifying it
-$app->get('/api/post/detail/{idPost}/editComment/{idComment}/get', function($idPost, $idComment) use ($app){
-	$sql = "SELECT * FROM comments WHERE id = ? AND idPost = ?";
-	$getTheCommentToEdit = $app['db']->fetchAll($sql, array((int) $idComment, $idPost));
+$app->get('/api/post/detail/{id_post_id}/editComment/{idComment}/get', function($id_post_id, $idComment) use ($app){
+	$sql = "SELECT * FROM comments WHERE id = ? AND id_post_id = ?";
+	$getTheCommentToEdit = $app['db']->fetchAll($sql, array((int) $idComment, $id_post_id));
 
 	return json_encode($getTheCommentToEdit);
 });
 
 //modifying the comment
-$app->post('/api/post/detail/{idPost}/editComment/{idComment}/edit', function(Request $request, $idPost, $idComment) use ($app){
-	$sql = "SELECT * FROM comments WHERE id = ? AND idPost = ?";
-	$comment = $app['db']->fetchAll($sql, array((int) $idComment, $idPost));
+$app->post('/api/post/detail/{id_post_id}/editComment/{idComment}/edit', function(Request $request, $id_post_id, $idComment) use ($app){
+	$sql = "SELECT * FROM comments WHERE id = ? AND id_post_id = ?";
+	$comment = $app['db']->fetchAll($sql, array((int) $idComment, $id_post_id));
 
     if ($request->get('comment') != null){	$post['comment'] = $request->get('comment');}
 
-    $sql = "UPDATE comments SET comment=? WHERE id = ? AND idPost = ?";
+    $sql = "UPDATE comments SET comment=? WHERE id = ? AND id_post_id = ?";
     $comment = $app['db']->executeUpdate($sql, array(
         $post['comment'],
         (int) $idComment,
-        (int) $idPost
+        (int) $id_post_id
     ));
 
-    $sql = "SELECT * FROM comments WHERE idPost = ?";
-	$commentEdited = $app['db']->fetchAll($sql, array((int) $idPost));
+    $sql = "SELECT * FROM comments WHERE id_post_id = ?";
+	$commentEdited = $app['db']->fetchAll($sql, array((int) $id_post_id));
     return json_encode($commentEdited);
 });
 
