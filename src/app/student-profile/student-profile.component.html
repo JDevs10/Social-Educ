@@ -219,17 +219,25 @@
         <h2 class="text-center">Ajouter un Compétence</h2>
         <br>
         <button (click)="closeSkillForm();skillName.value='';"class="hiddenFormIcons"><i class="fa fa-times"></i></button>
-        <br><br><br>
+        <br><br>
         <label>Ajouter votre compétence:</label><br>
-        <input type="text" placeholder="Ex: Java, Communication..." #skillName><br>
+        <input type="text" placeholder="Ex: Java, Communication..." #skillName><br><br>
         <button (click)="addSkill(skillName.value); skillName.value='';" class="save-form-popup">Enregistrer</button>
-    </div>
+        <br><br>
+      </div>
 </div>
 
-<!-- student hidden modification pop-up for all form -->
+<!-- all hidden modification pop-up for all form -->
 <div class="container">
-  <div class="form-popup-all" id="allFrom" routerLink="/student-Profile/1/form-modification/:id">
-    <p>hello world</p>
+  <div class="form-popup-all" id="allFrom">
+    <h2 class="text-center">Modifier un Compétence</h2>
+    <br>
+    <button (click)="closeSkillForm();skillName.value='';"class="hiddenFormIcons"><i class="fa fa-times"></i></button>
+    <br><br>
+    <label>La compétence à modifier:</label><br>
+    <input type="text" placeholder="Modification..." #skillName><br><br>
+    <button (click)="editSkill(skillName.value); skillName.value='';" class="save-form-popup">Enregistrer</button>
+    <br><br>
   </div>
 </div>
 
@@ -291,7 +299,7 @@
           <P>{{experience.Description}}</P>
         </div>
         <div class="experienceModifyIcons">
-          <button (click)="modifyExperiencePost(experience.id, 0);"><i class="fa fa-pencil"></i></button>
+          <button (click)="modifyExperiencePost(experience.id);"><i class="fa fa-pencil"></i></button>
           <button (click)="deleteExperiencePost(experience.id)"><i class="fa fa-trash-o"></i></button>
         </div>
       </div>
@@ -343,7 +351,7 @@
           <p>{{skill.SkillName}} </p>
         </div>
         <div class="skillModifyIcons row">
-          <button (click)="modifySkillPost(skill.id, 2);"><i class="fa fa-pencil"></i></button><br>
+          <button (click)="modifySkillPost(skill.id);"><i class="fa fa-pencil"></i></button><br>
           <button (click)="deleteSkill(skill.id)" class="deleteButtonIcon"><i class="fa fa-trash-o"></i></button>
         </div>
       </div>

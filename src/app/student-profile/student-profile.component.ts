@@ -41,10 +41,14 @@ export class StudentProfileComponent implements OnInit {
     this.actualRole();
   }
 
-  getExperience(): void{
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.experienceService.getExperience(id).subscribe(experience => this.experience = experience);
-  }
+//============================================== Post section ========================================================
+
+
+//============================================== Experience section ========================================================
+getExperience(): void{
+  const id = +this.route.snapshot.paramMap.get('id');
+  this.experienceService.getExperience(id).subscribe(experience => this.experience = experience);
+}
   
 openExperienceForm(): void {
   var div_pop_up = document.getElementById("pop-up");
@@ -90,7 +94,11 @@ closeExperienceForm(): void {
 
 modifyExperiencePost(experiencePostID: Number): void{
   alert("A form pop-up need to show the correct information of the experience post by this id : "+experiencePostID);
+  var div_pop_up = document.getElementById("pop-up");
   var allFrom_div = document.getElementById("allFrom");
+
+  div_pop_up.style.display = "block";
+  allFrom_div.style.display = "block";
 
   //allFrom_div.innerHTML("<p>Hello World people !!!</p>");
 }
@@ -101,7 +109,8 @@ deleteExperiencePost(experiencePostID: Number): void{
   this.experienceService.deleteExperiencePost(experiencePostID, IdStudent).subscribe(experience => this.experience = experience);
 }
 
-// Education
+
+//============================================== Education section ========================================================
 getEducationPost(): void{
   const id = +this.route.snapshot.paramMap.get('id');
   this.educationService.getEducation(id).subscribe(education => this.education = education);
@@ -162,7 +171,8 @@ deleteEducationPost(educationPostID: Number){
   this.educationService.deleteEducationPost(educationPostID, IdStudent).subscribe(education => this.education = education);
 }
 
-// Skills
+
+//============================================== Skill section ========================================================
 openSkillForm(): void {
   var div_pop_up = document.getElementById("pop-up");
   var skillForm = document.getElementById("mySkillForm");
@@ -192,8 +202,12 @@ closeSkillForm(): void {
   skillForm.style.display = "none";
 }
 
-modifySkillPost(id_id: Number, n: Number): void{
+modifySkillPost(skillPostId: Number): void{
+  var div_pop_up = document.getElementById("pop-up");
+  var allFrom_div = document.getElementById("allFrom");
 
+  div_pop_up.style.display = "block";
+  allFrom_div.style.display = "block";
 }
 
 deleteSkill(skill_id: Number): void{
